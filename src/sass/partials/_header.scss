@@ -91,6 +91,10 @@
     }
 }
 
+.mapped-header__divider {
+    margin-left: -10px;
+}
+
 .mapped-header__bar {
     padding: 12px 0;
     font-family: 'Guardian Text Sans Web';
@@ -114,4 +118,21 @@
 
 .mapped-header__last-updated {
     display: block;
+}
+
+.mapped-header__drop-cap {
+    font-family: 'Guardian Egyptian Web';
+    display: inline-block;
+    text-transform: uppercase;
+    font-weight: 900;
+    float: left;
+    padding-top: 2px;
+    color: $c-red;
+    margin-right: 6px;
+    height: 4.3em;
+}
+
+.mapped-header__drop-cap__inner {
+    font-size: 5.4em;
+    line-height: 0.89;
 }
