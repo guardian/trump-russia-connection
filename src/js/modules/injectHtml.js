@@ -3,6 +3,7 @@ var handlebars = require('handlebars');
 var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
+var charts = require('../modules/charts.js');
 
 var event = require('../templates/event.html');
 
@@ -61,6 +62,7 @@ module.exports =  {
         this.addIntro();
         this.addTimestamp();
         this.addEvents();
+        this.addChartData();
     },
 
     addIntro: function() {
@@ -79,5 +81,26 @@ module.exports =  {
     addEvents: function() {
         var template = handlebars.compile(event);
         $('.mapped-events').html(template(data.Events));
+    },
+
+    addChartData: function() {
+        var chartData = {};
+
+        $.each(data.Connections, function(i, person) {
+            if (!chartData[person.event]) {
+                chartData[person.event] = [];
+            }
+
+            chartData[person.event].push(person)
+        }.bind(this));
+
+        console.log(chartData);
+
+        for (var i in chartData) {
+            console.log(chartData[i]);
+            $('.mapped-event__chart[data-chart="' + i + '"]').attr('data-json', JSON.stringify(chartData[i]));
+        }
+
+        charts.init();
     }
 };
