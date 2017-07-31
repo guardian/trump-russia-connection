@@ -1,0 +1,14 @@
+<div class='gs-container'>
+    {{#each this}}
+        <div class='mapped-event__event'>
+            <h2 class='mapped-event__date'>{{ date }}</h2>
+            <h2 class='mapped-event__title'>{{ title }}</h2>
+
+            {{{ marked intro }}}
+
+            <img class='mapped-event__chart' src='{{ assetPath }}/assets/images/temp-chart.jpg' />
+
+            <img class='mapped-event__divider' src='{{ assetPath }}/assets/images/divider.svg' />
+        </div>
+    {{/each}}
+</div>

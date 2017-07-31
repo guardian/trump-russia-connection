@@ -4,6 +4,8 @@ var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
 
+var event = require('../templates/event.html');
+
 var data;
 
 module.exports =  {
@@ -34,6 +36,10 @@ module.exports =  {
         handlebars.registerHelper('assetPath', function() {
             return '@@assetPath@@'
         });
+
+        handlebars.registerHelper('marked', function(string) {
+            return marked(string);
+        });
     },
 
     getJson: function() {
@@ -54,6 +60,7 @@ module.exports =  {
     injectHtml: function() {
         this.addIntro();
         this.addTimestamp();
+        this.addEvents();
     },
 
     addIntro: function() {
@@ -67,5 +74,10 @@ module.exports =  {
 
     addTimestamp: function() {
         $('.mapped-header__last-updated').text('Last Updated ' + lastUpdated.convert(data.lastUpdated));
+    },
+
+    addEvents: function() {
+        var template = handlebars.compile(event);
+        $('.mapped-events').html(template(data.Events));
     }
 };

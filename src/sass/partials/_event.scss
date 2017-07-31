@@ -1,0 +1,65 @@
+.mapped-event__event {
+    position: relative;
+    padding: 6px 10px;
+    max-width: 620px;
+
+    @include mq(mobileLandscape) {
+        padding: 6px 20px;
+    }
+
+    @include mq(tablet) {
+        padding-left: 130px;
+        padding-right: 130px;
+    }
+
+    @include mq(leftCol) {
+        padding-left: 180px;
+        padding-right: 140px;
+    }
+
+    @include mq(wide) {
+        padding-left: 260px;
+    }
+}
+
+.mapped-event__date,
+.mapped-event__title {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+    color: $c-black;
+
+    @include mq(tablet) {
+        font-size: 24px;
+    }
+}
+
+.mapped-event__date {
+    @include mq(leftCol) {
+        position: absolute;
+        top: 6px;
+        left: 20px;
+    }
+}
+
+.mapped-event__title {
+    color: $c-red;
+}
+
+.mapped-event__chart {
+    width: 100%;
+
+    @include mq(tablet) {
+        margin-left: -110px;
+        width: 700px;
+    }
+
+    @include mq(desktop) {
+        width: 920px;
+    }
+
+    @include mq(wide) {
+        margin-left: -160px;
+    }
+}

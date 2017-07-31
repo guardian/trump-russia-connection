@@ -27,10 +27,10 @@
 
 .mapped-header__content {
     max-width: 620px;
-    padding: 33% 10px 0;
+    padding: 33% 10px 12px;
 
     @include mq(mobileLandscape) {
-        padding: 36% 20px 0;
+        padding: 36% 20px 12px;
     }
 
     @include mq(tablet) {
