@@ -1,14 +1,8 @@
 var $ = require('../vendor/jquery.js');
 var handlebars = require('handlebars');
+var marked = require('marked');
 
-var share = require('../modules/share.js');
-var scrollTo = require('../modules/scrollTo.js');
 var lastUpdated = require('../modules/lastUpdated.js');
-
-var dayHtml = require('../templates/days.html');
-var statsHtml = require('../templates/stats.html');
-var membershipHtml = require('../templates/membership.html');
-var relatedHtml = require('../templates/related.html');
 
 var data;
 
@@ -43,79 +37,30 @@ module.exports =  {
     },
 
     getJson: function() {
-        $.getJSON('https://interactive.guim.co.uk/docsdata/1TTV-g36nUE8uxVb882sC2lCeR8Yt8SGjIbJtN12yF0E.json', function(response) {
+        $.getJSON('https://interactive.guim.co.uk/docsdata-test/1As_b3BQ4IE444OgwNg-fqTF4tSfC51f4KKPSmQXtwhc.json', function(response) {
             data = response.sheets;
-            data.completeDays = 0;
-            for (var i in data.days) {
-                if (data.days[i].copy !== '') {
-                    data.completeDays = parseInt(i) + 1;
-                }
+
+            for (var i in data.Main) {
+                data[data.Main[i].key] = data.Main[i].option;
             }
+
+            delete data.Main;
+
             console.log(data);
             this.injectHtml();
         }.bind(this));
     },
 
     injectHtml: function() {
-        this.addDays();
-        this.addStats();
-        this.addSidebar();
-        this.addRelated();
+        this.addIntro();
     },
 
-    addDays: function() {
-        var dayTemplate = handlebars.compile(dayHtml);
-        console.log(data.completeDays);
-        var compiledHtml = dayTemplate({days: this.cleanDays(data.days), completeDays: data.completeDays});
+    addIntro: function() {
+        var markedIntro = marked(data.intro);
+        var intro = markedIntro.slice(3);
+        var firstCharacter = intro.substring(0, 1);
+            intro = intro.slice(1);
 
-        $('.trump-tracker__days').html(compiledHtml);
-        $('.trump-tracker__day:nth-of-type(3)').after(membershipHtml);
-
-        share.setDayLinks();
-        $('.trump-tracker__loading').addClass('has-loaded');
-
-        setTimeout(function() {
-            scrollTo.init()
-        }, 500);
+        $('.mapped-header__intro').html('<p><span class=\'mapped-header__drop-cap\'><span class=\'mapped-header__drop-cap__inner\'>' + firstCharacter + '</span></span>' + intro);
     },
-
-    addStats: function() {
-        var statsTemplate = handlebars.compile(statsHtml);
-        var compiledHtml = statsTemplate(this.sortData(data.data));
-
-        $('.trump-tracker__stats .gs-container').html(compiledHtml);
-    },
-
-    addSidebar: function() {
-        var sortedData = this.sortData(data.data);
-        var date = lastUpdated.convert(Date.parse(sortedData.lastUpdated));
-        $('.trump-tracker__updated').text('Last Updated ' + date);
-    },
-
-    addRelated: function() {
-        var relatedTemplate = handlebars.compile(relatedHtml);
-        var compiledHtml = relatedTemplate({related: data.related});
-
-        $('.trump-tracker__related').html(compiledHtml);
-    },
-
-    sortData: function(data) {
-        var furniture = {}
-
-        for (var i = 0; i < data.length; i++) {
-            furniture[data[i].option] = data[i].value
-        }
-
-        return furniture;
-    },
-
-    cleanDays: function(days) {
-        for (var i = 0; i < days.length; i++) {
-            if (days[i].type === 'embed') {
-                days[i].media = days[i].media.replace('src="//', 'src="https://');
-            }
-        }
-
-        return days.reverse();
-    }
 };
