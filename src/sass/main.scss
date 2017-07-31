@@ -12,16 +12,18 @@ $mq-breakpoints: (
 );
 
 // colours
+$c-red: #ff5b3a;
+
 $c-blue: #1e3f74;
-$c-red: #b51800;
 $c-light-blue: #aad8f1;
 
 // non-colours
 $c-white: #ffffff;
-$c-off-white: #f1f1f1;
+$c-off-white: #f6f6f6;
 $c-grey: #dfdfdf;
-$c-dark-grey: #999;
 $c-black: #333333;
+
+$c-dark-grey: #999;
 
 // social
 $c-twitter: #4bc6df;
@@ -32,6 +34,7 @@ $c-ad-grey: #f6f6f6;
 
 @import "partials/fonts";
 @import "partials/page";
+@import "partials/share";
 
 @import "partials/base";
 @import "partials/header";
