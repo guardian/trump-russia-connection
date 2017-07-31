@@ -1,21 +1,45 @@
 .mapped-header {
     background-image: url('@@assetPath@@/assets/images/header.jpg');
-    background-position: top center;
+    background-position: center -50px;
     background-size: 120vw;
     background-color: $c-off-white;
     background-repeat: no-repeat;
 
+    @include mq(tablet) {
+        background-size: 1000px;
+    }
+
+    @include mq(desktop) {
+        background-size: auto;
+    }
+
     @include mq(wide) {
+        background-position: calc(50% - 30px) -50px;
         background-size: auto;
     }
 }
 
 .mapped-header__content {
     max-width: 620px;
+    padding: 0 10px;
+
+    @include mq(mobileLandscape) {
+        padding: 0 20px;
+    }
+
+    @include mq(tablet) {
+        padding-top: 100px;
+        padding-left: 130px;
+        padding-right: 130px;
+    }
+
+    @include mq(desktop) {
+        padding-top: 183px;
+    }
 
     @include mq(leftCol) {
-        padding-top: 240px;
         padding-left: 180px;
+        padding-right: 140px;
     }
 
     @include mq(wide) {

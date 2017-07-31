@@ -13,12 +13,17 @@
 }
 
 .mapped-share__button {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
     float: left;
     margin-right: 4px;
     border-radius: 40px;
     background-color: $c-dark-grey;
+
+    @include mq(tablet) {
+        width: 38px;
+        height: 38px;
+    }
 
     &:hover {
         background-color: darken($c-dark-grey, 5%);
