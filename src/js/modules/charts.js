@@ -19,8 +19,6 @@ module.exports =  {
             .force("charge", d3.forceManyBody())
             .force("center", d3.forceCenter(width / 2, height / 2));
 
-        var color = d3.scaleOrdinal(d3.schemeCategory20);
-
         var links = [];
 
         for (var i in data) {
@@ -50,7 +48,7 @@ module.exports =  {
             .data(data)
             .enter().append("circle")
             .attr("r", 5)
-            .attr("fill", function(d) { return color(d.group); })
+            .attr("fill", '#ff5b3a')
 
         node.append("title")
             .text(function(d) { return d.name; });
