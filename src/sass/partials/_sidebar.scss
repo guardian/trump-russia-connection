@@ -1,0 +1,24 @@
+.trump-tracker__sidebar {
+    max-width: 620px;
+    margin: 12px 0;
+    font-family: 'Guardian Text Egyptian Web';
+
+    @include mq(leftCol) {
+        position: absolute;
+        left: -160px;
+        width: 140px;
+        margin-top: 0;
+    }
+
+    @include mq(wide) {
+        left: -240px;
+        width: 220px;
+    }
+}
+
+.trump-tracker__updated {
+    font-family: 'Guardian Sans Web';
+    color: #666;
+    font-size: 14px;
+    margin-top: 2px;
+}

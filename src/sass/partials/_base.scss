@@ -1,0 +1,65 @@
+.trump-tracker {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 400;
+    background-color: $c-white;
+
+    h1, h2, h3, h4, h5, p {
+        margin: 0;
+    }
+}
+
+.trump-tracker__mainCol {
+    position: relative;
+    padding: 0 10px;
+    max-width: 620px;
+    min-height: 300px;
+
+    @include mq(mobileLandscape) {
+        padding: 0 20px;
+    }
+
+    @include mq(desktop) {
+        padding: 0;
+        margin: 12px 0 12px 20px;
+    }
+
+    @include mq(leftCol) {
+        margin-left: 180px;
+    }
+
+    @include mq(wide) {
+        margin-left: 260px;
+    }
+
+    &:before {
+        @include mq(leftCol) {
+            content: '';
+            position: absolute;
+            left: -11px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: $c-grey;
+        }
+    }
+
+    &:after {
+        @include mq(desktop) {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 33px;
+            bottom: 0;
+            width: 1px;
+            background-color: $c-grey;
+        }
+
+        @include mq(leftCol) {
+            top: 0;
+        }
+    }
+}
+
+.trump-tracker__content {
+    position: relative;
+}
