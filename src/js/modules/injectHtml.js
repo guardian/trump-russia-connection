@@ -53,6 +53,7 @@ module.exports =  {
 
     injectHtml: function() {
         this.addIntro();
+        this.addTimestamp();
     },
 
     addIntro: function() {
@@ -63,4 +64,8 @@ module.exports =  {
 
         $('.mapped-header__intro').html('<p><span class=\'mapped-header__drop-cap\'><span class=\'mapped-header__drop-cap__inner\'>' + firstCharacter + '</span></span>' + intro);
     },
+
+    addTimestamp: function() {
+        $('.mapped-header__last-updated').text('Last Updated ' + lastUpdated.convert(data.lastUpdated));
+    }
 };
