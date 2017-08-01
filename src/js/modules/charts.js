@@ -71,7 +71,7 @@ module.exports =  {
 
             node
                 .attr('cx', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)); })
-                .attr('cy', function(d) { return d.y = Math.max(radius, Math.min(width - radius, d.y));; });
+                .attr('cy', function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y));; });
           }
 
     }
