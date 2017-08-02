@@ -12,6 +12,10 @@ module.exports =  {
         this.bindings();
     },
 
+    getAssetPath: function() {
+        return $('.mapped').attr('data-asset-path');
+    },
+
     bindings: function() {
         $(window).resize(function() {
             this.setSizes();
@@ -73,7 +77,7 @@ module.exports =  {
             .selectAll('line')
             .data(links)
             .enter().append('image')
-            .attr('xlink:href', 'assets/images/line.svg');
+            .attr('xlink:href', this.getAssetPath() + '/assets/images/line.svg');
 
         var linkCopy = svg.append('g')
             .attr('class', 'linkCopy')
