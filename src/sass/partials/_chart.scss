@@ -1,5 +1,5 @@
-.mapped-chart__person {
-    max-width: 140px;
+.mapped-chart__image {
+    // transform: translateX(-50%) translateY(-50%);
 }
 
 .mapped-chart__image-wrapper {
@@ -13,22 +13,12 @@
     overflow: hidden;
 }
 
-.mapped-chart__image {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-}
-
 .mapped-chart__name {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
     font-size: 16px;
     line-height: 1;
-    color: $c-red;
+    fill: $c-red;
     text-align: center;
     margin-top: 4px;
 }

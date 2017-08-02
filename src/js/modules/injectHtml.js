@@ -52,8 +52,7 @@ module.exports =  {
             }
 
             delete data.Main;
-
-            console.log(data);
+;
             this.injectHtml();
         }.bind(this));
     },
@@ -94,10 +93,7 @@ module.exports =  {
             chartData[person.event].push(person)
         }.bind(this));
 
-        console.log(chartData);
-
         for (var i in chartData) {
-            console.log(chartData[i]);
             $('.mapped-event__chart[data-chart="' + i + '"]').attr('data-json', JSON.stringify(chartData[i]));
         }
 
