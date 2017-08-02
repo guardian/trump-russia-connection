@@ -23,6 +23,12 @@
     margin-top: 4px;
 }
 
+.mapped-chart__link-copy {
+    font-family: 'Guardian Text Sans Web';
+    font-size: 16px;
+    color: $c-black;
+}
+
 .links line {
     stroke: $c-grey;
 }

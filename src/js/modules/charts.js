@@ -28,7 +28,7 @@ module.exports =  {
     },
 
     getCollision: function(radius, length) {
-        var distance = Math.abs(12 / -(length));
+        var distance = Math.abs(15 / -(length));
 
         if (distance > 3) {
             distance = 3;
@@ -54,13 +54,19 @@ module.exports =  {
             .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
-        var circle = svg.append('defs')
-            .selectAll('circle')
+        var defs = svg.append('defs')
+
+        var circle = defs.selectAll('circle')
             .data(data)
             .enter().append('clipPath')
             .attr('id', function(d) { return d.id })
             .append('circle')
             .attr('r', radius);
+
+        var lines = defs.selectAll('links')
+            .data(links)
+            .enter().append('path')
+            .attr('id', function(d) { return d.linkId });
 
         var link = svg.append('g')
             .attr('class', 'links')
@@ -68,6 +74,19 @@ module.exports =  {
             .data(links)
             .enter().append('image')
             .attr('xlink:href', 'assets/images/line.svg');
+
+        var linkCopy = svg.append('g')
+            .attr('class', 'linkCopy')
+            .selectAll('line')
+            .data(links)
+            .enter().append('text')
+            .attr('class', 'mapped-chart__link-copy')
+            .attr('text-anchor', 'middle')
+
+            linkCopy.append('textPath')
+            .attr('xlink:href', function(d) { return '#' + d.linkId })
+            .attr('startOffset', '50%')
+            .text(function(d) { return d.linkCopy });
 
         var node = svg.append('g')
             .attr('class', 'nodes')
@@ -125,6 +144,10 @@ module.exports =  {
                 .attr('y', function(d) { return d.source.y + radius })
                 .attr('width', function(d) { return Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) )})
                 .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
+
+            lines
+                .attr('d', function(d) { return 'M' + (d.source.x + radius) + ' ' + (d.source.y + radius) + ' ' + (d.target.x + radius) + ' ' + (d.target.y + radius) })
+
         }
     },
 
@@ -134,15 +157,35 @@ module.exports =  {
         for (var i in data) {
             if (data[i].connected !== '') {
                 var splitConnected = data[i].connected.split(', ',);
+
                 splitConnected.forEach(function(target) {
+                    if (target.indexOf(' - ') > -1) {
+                        var split = target.split(' - ');
+                        target = split[0];
+                        var linkCopy = split[1];
+                    }
+
                     links.push({
+                        'linkId': this.makeId(),
                         'source': data[i].name,
-                        'target': target
+                        'target': target,
+                        'linkCopy': linkCopy ? linkCopy : ''
                     });
-                });
+                }.bind(this));
             }
         }
 
         return links;
     },
+
+    makeId: function() {
+        var text = '';
+        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for (var i = 0; i < 5; i++) {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    }
 };
