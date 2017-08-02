@@ -37,6 +37,8 @@ module.exports =  {
 
         var links = [];
 
+        console.log(data);
+
         for (var i in data) {
             // build links
             if (data[i].connected !== '') {
@@ -54,10 +56,9 @@ module.exports =  {
         }
 
         var simulation = d3.forceSimulation()
-            .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(10).iterations(5))
-            .force('charge', d3.forceManyBody().strength(2))
-            .force('collision', d3.forceCollide(radius * 2))
-            .force('center', d3.forceCenter(width / 2, height / 2))
+            .force('link', d3.forceLink().id(function(d) { return d.name; }))
+            .force('collision', d3.forceCollide(radius * 2.2).strength(3))
+            .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
         var link = svg.append('g')
@@ -80,6 +81,11 @@ module.exports =  {
             .selectAll('circle')
             .data(data)
             .enter()
+
+        var boxes = node.append('rect')
+            .attr('width', radius * 2)
+            .attr('height', 20)
+            .attr('style', 'fill: white;');
 
         var image = node.append('image')
             .attr('class', 'mapped-chart__image')
@@ -122,6 +128,10 @@ module.exports =  {
             label
                 .attr('x', function(d) { return d.x + radius; })
                 .attr('y', function(d) { return d.y + (radius * 2) + 20; });
+
+            boxes
+                .attr('x', function(d) { return d.x })
+                .attr('y', function(d) { return d.y + (radius * 2) + 5});
         }
     },
 
