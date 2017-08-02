@@ -27,17 +27,30 @@ module.exports =  {
         });
     },
 
+    getCollision: function(radius, length) {
+        var distance = Math.abs(12 / -(length));
+
+        if (distance > 3) {
+            distance = 3;
+        } else if (distance < 1.2) {
+            distance = 1.2;
+        }
+
+        return radius * distance;
+    },
+
     createChart: function(target) {
         var svg = d3.select(target),
             width = 920,
             height = 500,
             radius = 60,
             data = JSON.parse($(target).attr('data-json'))
+            length = data.length,
             links = this.buildLinks(data);
 
         var simulation = d3.forceSimulation()
             .force('link', d3.forceLink().id(function(d) { return d.name; }))
-            .force('collision', d3.forceCollide(radius * 2.2).strength(3))
+            .force('collision', d3.forceCollide(this.getCollision(radius, length)).strength(3))
             .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
@@ -91,12 +104,6 @@ module.exports =  {
         for (var i = 0, n = Math.ceil(Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())); i < n; ++i) {
             simulation.tick();
 
-            link
-                .attr('x', function(d) { return d.source.x })
-                .attr('y', function(d) { return d.source.y })
-                .attr('width', function(d) { return Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) )})
-                .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
-
             image
                 .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) - 60 })
                 .attr('y', function(d) { return d.y = Math.max(radius , Math.min(height - radius * 2 , d.y) - 60) });
@@ -112,6 +119,12 @@ module.exports =  {
             boxes
                 .attr('x', function(d) { return d.x })
                 .attr('y', function(d) { return d.y + (radius * 2) + 5});
+
+            link
+                .attr('x', function(d) { return d.source.x + radius })
+                .attr('y', function(d) { return d.source.y + radius })
+                .attr('width', function(d) { return Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) )})
+                .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
         }
     },
 
