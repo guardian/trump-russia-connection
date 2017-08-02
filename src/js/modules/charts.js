@@ -85,7 +85,7 @@ module.exports =  {
             .attr('width', radius * 2)
             .attr('height', radius * 2)
             .attr('clip-path', function(d) { return 'url(#' + d.id + ')' })
-            .attr('xlink:href', 'assets/images/placeholder.jpg');
+            .attr('xlink:href',  function(d) {return d.image } );
 
         var label = node.append('text')
             .attr('text-anchor', 'middle')

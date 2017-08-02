@@ -53,12 +53,20 @@ module.exports =  {
 
             for (var i in data.Connections) {
                 data.Connections[i].id = 'person-' + this.makeId();
+                data.Connections[i].image = this.getImageUrl(data.Connections[i].image);
             }
 
             delete data.Main;
 
             this.injectHtml();
         }.bind(this));
+    },
+
+    getImageUrl: function(url) {
+        // https://media.gutools.co.uk/images/6536326d8607bce1684588a9afcdd7255c46b5ba?crop=991_0_3089_3089
+        // https://media.guim.co.uk/6536326d8607bce1684588a9afcdd7255c46b5ba/991_0_3089_3089/140.jpg
+        var newUrl = url.replace('.gutools', '.guim').replace('/images', '').replace('?crop=', '/') + '/140.jpg';
+        return newUrl;
     },
 
     injectHtml: function() {
