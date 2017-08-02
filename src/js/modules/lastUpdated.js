@@ -4,7 +4,7 @@ module.exports =  {
     convert: function(timestamp) {
         var now = new Date(),
             then = new Date(timestamp),
-            delta = parseInt((now.getTime() - timestamp) / 1000, 10);
+            delta = parseInt((now.getTime() - then) / 1000, 10);
 
         if (delta < 0) {
             return false;
