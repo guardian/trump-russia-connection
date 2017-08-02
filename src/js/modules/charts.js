@@ -32,7 +32,7 @@ module.exports =  {
             width = 920,
             height = 500,
             radius = 60,
-            n = 20,
+            n,
             data = JSON.parse($(target).attr('data-json'));
 
         var links = [];
@@ -106,13 +106,13 @@ module.exports =  {
             simulation.tick();
 
             link
-                .attr('x1', function(d) { return d.source.x + radius; })
+                .attr('x1', function(d) { return d.source.x + radius - 60; })
                 .attr('y1', function(d) { return d.source.y + radius - 60; })
-                .attr('x2', function(d) { return d.target.x + radius; })
+                .attr('x2', function(d) { return d.target.x + radius - 60; })
                 .attr('y2', function(d) { return d.target.y + radius - 60; });
 
             image
-                .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius * 2, d.x)) })
+                .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius * 2, d.x)) - 60 })
                 .attr('y', function(d) { return d.y = Math.max(radius , Math.min(height - radius * 2 , d.y) - 60) });
 
             circle
