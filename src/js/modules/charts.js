@@ -107,21 +107,21 @@ module.exports =  {
 
             link
                 .attr('x1', function(d) { return d.source.x + radius; })
-                .attr('y1', function(d) { return d.source.y + radius; })
+                .attr('y1', function(d) { return d.source.y + radius - 60; })
                 .attr('x2', function(d) { return d.target.x + radius; })
-                .attr('y2', function(d) { return d.target.y + radius; });
+                .attr('y2', function(d) { return d.target.y + radius - 60; });
 
             image
                 .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius * 2, d.x)) })
-                .attr('y', function(d) { return d.y = Math.max(radius, Math.min(height - radius * 2, d.y)) });
-
-            label
-                .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) + radius })
-                .attr('y', function(d) { return d.y = Math.max(radius * 2, Math.min(height - radius * 2, d.y)) + (radius * 2) + 20; });
+                .attr('y', function(d) { return d.y = Math.max(radius , Math.min(height - radius * 2 , d.y) - 60) });
 
             circle
-                .attr('cx', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) })
-                .attr('cy', function(d) { return d.y = Math.max(radius, Math.min(height - radius, d.y)) - (radius + 15) });
+                .attr('cx', function(d) { return d.x + radius })
+                .attr('cy', function(d) { return d.y + radius });
+
+            label
+                .attr('x', function(d) { return d.x + radius; })
+                .attr('y', function(d) { return d.y + (radius * 2) + 20; });
         }
     },
 
