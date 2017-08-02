@@ -33,27 +33,8 @@ module.exports =  {
             height = 500,
             radius = 60,
             n,
-            data = JSON.parse($(target).attr('data-json'));
-
-        var links = [];
-
-        console.log(data);
-
-        for (var i in data) {
-            // build links
-            if (data[i].connected !== '') {
-                var splitConnected = data[i].connected.split(', ',);
-                splitConnected.forEach(function(target) {
-                    links.push({
-                        'source': data[i].name,
-                        'target': target
-                    });
-                });
-            }
-
-            // unique IDs
-            data[i].id = 'person-' + this.makeId();
-        }
+            data = JSON.parse($(target).attr('data-json'))
+            links = this.buildLinks(data);
 
         var simulation = d3.forceSimulation()
             .force('link', d3.forceLink().id(function(d) { return d.name; }))
@@ -118,7 +99,7 @@ module.exports =  {
                 .attr('y2', function(d) { return d.target.y + radius - 60; });
 
             image
-                .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius * 2, d.x)) - 60 })
+                .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) - 60 })
                 .attr('y', function(d) { return d.y = Math.max(radius , Math.min(height - radius * 2 , d.y) - 60) });
 
             circle
@@ -135,14 +116,21 @@ module.exports =  {
         }
     },
 
-    makeId: function() {
-        var text = '';
-        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    buildLinks: function(data) {
+        var links = [];
 
-        for (var i = 0; i < 5; i++) {
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        for (var i in data) {
+            if (data[i].connected !== '') {
+                var splitConnected = data[i].connected.split(', ',);
+                splitConnected.forEach(function(target) {
+                    links.push({
+                        'source': data[i].name,
+                        'target': target
+                    });
+                });
+            }
         }
 
-        return text;
+        return links;
     }
 };
