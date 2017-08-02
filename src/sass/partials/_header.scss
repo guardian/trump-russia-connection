@@ -114,10 +114,21 @@
 
 .mapped-header__meta {
     padding-top: 1px;
+
+    a {
+        color: $c-black;
+        border-bottom: 1px solid $c-black;
+
+        &:hover {
+            text-decoration: none;
+            border-bottom-color: $c-red;
+        }
+    }
 }
 
 .mapped-header__last-updated {
     display: block;
+    color: $c-red;
 }
 
 .mapped-header__drop-cap {
