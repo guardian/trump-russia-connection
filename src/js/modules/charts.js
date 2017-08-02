@@ -32,7 +32,6 @@ module.exports =  {
             width = 920,
             height = 500,
             radius = 60,
-            n,
             data = JSON.parse($(target).attr('data-json'))
             links = this.buildLinks(data);
 
@@ -42,13 +41,6 @@ module.exports =  {
             .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
-        var link = svg.append('g')
-            .attr('class', 'links')
-            .selectAll('line')
-            .data(links)
-            .enter().append('line')
-            .attr('stroke-width', 5);
-
         var circle = svg.append('defs')
             .selectAll('circle')
             .data(data)
@@ -56,6 +48,13 @@ module.exports =  {
             .attr('id', function(d) { return d.id })
             .append('circle')
             .attr('r', radius);
+
+        var link = svg.append('g')
+            .attr('class', 'links')
+            .selectAll('line')
+            .data(links)
+            .enter().append('image')
+            .attr('xlink:href', 'assets/images/line.svg');
 
         var node = svg.append('g')
             .attr('class', 'nodes')
@@ -93,10 +92,10 @@ module.exports =  {
             simulation.tick();
 
             link
-                .attr('x1', function(d) { return d.source.x + radius - 60; })
-                .attr('y1', function(d) { return d.source.y + radius - 60; })
-                .attr('x2', function(d) { return d.target.x + radius - 60; })
-                .attr('y2', function(d) { return d.target.y + radius - 60; });
+                .attr('x', function(d) { return d.source.x })
+                .attr('y', function(d) { return d.source.y })
+                .attr('width', function(d) { return Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) )})
+                .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
 
             image
                 .attr('x', function(d) { return d.x = Math.max(radius, Math.min(width - radius, d.x)) - 60 })
@@ -132,5 +131,5 @@ module.exports =  {
         }
 
         return links;
-    }
+    },
 };
