@@ -147,10 +147,11 @@ module.exports =  {
                 .attr('x', function(d) { return d.source.x + radius })
                 .attr('y', function(d) { return d.source.y + radius })
                 .attr('width', function(d) { return Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) )})
-                .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
+                .attr('style', function(d) { return 'transform-origin: center left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
 
             lines
                 .attr('d', function(d) { return this.drawLine(d, radius) }.bind(this))
+                .attr('style', function(d) { if (d.source.x > d.target.x) { return 'transform-origin: center center; transform: rotate(180deg) translateY(-20px)'; } })
 
         }
     },
@@ -183,15 +184,19 @@ module.exports =  {
     },
 
     drawLine: function(d, radius) {
-        var points;
+        var length = Math.sqrt( (d.source.x - d.target.x) * (d.source.x - d.target.x) + (d.source.y - d.target.y) * (d.source.y - d.target.y) );
 
-        if (d.target.x > d.source.x) {
             points = (d.source.x + radius) + ' ' + (d.source.y + radius) + ' ' + (d.target.x + radius) + ' ' + (d.target.y + radius);
-        } else {
-            var offset = d.target.y > d.source.x ? -30 : 30;
-            points = (d.target.x + radius + offset) + ' ' + (d.target.y + radius) + ' ' + (d.source.x + radius + offset) + ' ' + (d.source.y + radius);
-        }
+
         return 'M' + points;
+    },
+
+    lineRotation: function(d, radius) {
+        if (d.target.x > d.source.x) {
+            return 0;
+        } else {
+            return ((Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) - 180);
+        }
     },
 
     makeId: function() {

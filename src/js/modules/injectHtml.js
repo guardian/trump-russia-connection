@@ -4,6 +4,7 @@ var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
 var charts = require('../modules/charts.js');
+var dates = require('../modules/dates.js');
 
 var event = require('../templates/event.html');
 
@@ -110,6 +111,7 @@ module.exports =  {
         }
 
         charts.init();
+        dates.init();
     },
 
     makeId: function() {
