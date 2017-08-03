@@ -150,7 +150,7 @@ module.exports =  {
                 .attr('style', function(d) { return 'transform-origin: top left; transform: rotate(' + (Math.atan2(d.target.y - d.source.y, d.target.x - d.source.x) * 180 / Math.PI) + 'deg)'});
 
             lines
-                .attr('d', function(d) { return 'M' + (d.source.x + radius) + ' ' + (d.source.y + radius) + ' ' + (d.target.x + radius) + ' ' + (d.target.y + radius) })
+                .attr('d', function(d) { return this.drawLine(d, radius) }.bind(this))
 
         }
     },
@@ -180,6 +180,18 @@ module.exports =  {
         }
 
         return links;
+    },
+
+    drawLine: function(d, radius) {
+        var points;
+
+        if (d.target.x > d.source.x) {
+            points = (d.source.x + radius) + ' ' + (d.source.y + radius) + ' ' + (d.target.x + radius) + ' ' + (d.target.y + radius);
+        } else {
+            var offset = d.target.y > d.source.x ? -30 : 30;
+            points = (d.target.x + radius + offset) + ' ' + (d.target.y + radius) + ' ' + (d.source.x + radius + offset) + ' ' + (d.source.y + radius);
+        }
+        return 'M' + points;
     },
 
     makeId: function() {
