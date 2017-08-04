@@ -1,0 +1,58 @@
+.mapped-timeline {
+    background-color: $c-off-white;
+
+    .gs-container {
+        overflow-x: scroll;
+        backface-visibility: hidden;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.mapped-timeline__inner {
+    overflow: hidden;
+    width: 100%;
+    min-width: 2010px;
+    padding: 6px 10px;
+
+    @include mq(mobileLandscape) {
+        padding: 10px 20px;
+    }
+}
+
+.mapped-timeline__entry {
+    float: left;
+    padding-right: 9px;
+    border-right: 1px $c-grey solid;
+    margin-right: 10px;
+    height: 50px;
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.1;
+    color: $c-black;
+
+    @include mq(tablet) {
+        font-size: 24px;
+    }
+
+    @include mq(leftCol) {
+        min-width: 160px;
+    }
+
+    @include mq(wide) {
+        min-width: 220px;
+    }
+
+    &:hover {
+        text-decoration: none;
+    }
+
+    span {
+        display: block;
+        color: $c-red;
+    }
+}

@@ -5,6 +5,7 @@ var marked = require('marked');
 var lastUpdated = require('../modules/lastUpdated.js');
 var charts = require('../modules/charts.js');
 var dates = require('../modules/dates.js');
+var scrollTo = require('../modules/scrollTo.js');
 
 var event = require('../templates/event.html');
 
@@ -33,6 +34,10 @@ module.exports =  {
                 url = url + '/' + crop + '/' + size + '.jpg';
 
             return '<img class="trump-tracker__day-image" src="' + url + '"/>'
+        });
+
+        handlebars.registerHelper('handelise', function(string) {
+            return string.replace(/ /g, '-').toLowerCase();
         });
 
         handlebars.registerHelper('assetPath', function() {
@@ -112,6 +117,7 @@ module.exports =  {
 
         charts.init();
         dates.init();
+        scrollTo.init();
     },
 
     makeId: function() {

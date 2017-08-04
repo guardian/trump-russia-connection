@@ -3,11 +3,11 @@ var $ = require('../vendor/jquery.js');
 module.exports =  {
     init: function() {
         if (this.getTarget()) {
-            this.scrollToDay(this.getTarget());
+            this.scrollTo(this.getTarget());
         }
     },
 
-    scrollToDay: function(target) {
+    scrollTo: function(target) {
         $('html, body').stop().animate({
             scrollTop: $(target).offset().top
         }, 400);
