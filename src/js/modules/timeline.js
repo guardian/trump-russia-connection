@@ -12,7 +12,6 @@ module.exports =  {
         $('.mapped-timeline__entry').click(function(e) {
             e.preventDefault();
             scrollTo.scrollTo(e.currentTarget.hash);
-            console.log(e);
         }.bind(this));
     },
 
