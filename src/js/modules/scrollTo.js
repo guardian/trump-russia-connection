@@ -9,7 +9,7 @@ module.exports =  {
 
     scrollTo: function(target) {
         $('html, body').stop().animate({
-            scrollTop: $(target).offset().top
+            scrollTop: $(target).offset().top - $('.mapped-timeline').height()
         }, 400);
     },
 
