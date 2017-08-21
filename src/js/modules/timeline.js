@@ -27,7 +27,7 @@ module.exports =  {
 
     populateTimeline: function() {
         $('.mapped-event__event').each(function(i, el) {
-            var date = $(el).find('.mapped-event__date').text();
+            var date = $(el).find('.mapped-event__number').text();
             var title = $(el).find('.mapped-event__title').text();
             var id = $(el).attr('id')
 

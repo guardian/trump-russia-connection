@@ -39,6 +39,10 @@ module.exports =  {
             return string.replace(/ /g, '-').toLowerCase();
         });
 
+        handlebars.registerHelper('numberise', function(number) {
+            return (parseInt(number) + 1)  + '.'
+        });
+
         handlebars.registerHelper('assetPath', function() {
             return '@@assetPath@@'
         });

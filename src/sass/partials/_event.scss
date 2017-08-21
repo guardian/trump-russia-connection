@@ -22,7 +22,7 @@
     }
 }
 
-.mapped-event__date,
+.mapped-event__number,
 .mapped-event__title {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
@@ -35,7 +35,7 @@
     }
 }
 
-.mapped-event__date {
+.mapped-event__number {
     @include mq(leftCol) {
         position: absolute;
         top: 6px;
