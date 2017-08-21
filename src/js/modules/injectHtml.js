@@ -7,6 +7,7 @@ var charts = require('../modules/charts.js');
 var dates = require('../modules/dates.js');
 
 var event = require('../templates/event.html');
+var bio = require('../templates/bio.html');
 
 var data;
 
@@ -65,6 +66,10 @@ module.exports =  {
                 data.Connections[i].image = this.getImageUrl(data.Connections[i].image);
             }
 
+            for (var i in data.Bios) {
+                data.Bios[i].image = this.getImageUrl(data.Bios[i].image);
+            }
+
             delete data.Main;
 
             this.injectHtml();
@@ -72,8 +77,6 @@ module.exports =  {
     },
 
     getImageUrl: function(url) {
-        // https://media.gutools.co.uk/images/6536326d8607bce1684588a9afcdd7255c46b5ba?crop=991_0_3089_3089
-        // https://media.guim.co.uk/6536326d8607bce1684588a9afcdd7255c46b5ba/991_0_3089_3089/140.jpg
         var newUrl = url.replace('.gutools', '.guim').replace('/images', '').replace('?crop=', '/') + '/140.jpg';
         return newUrl;
     },
@@ -83,6 +86,7 @@ module.exports =  {
         this.addTimestamp();
         this.addEvents();
         this.addChartData();
+        this.addBios();
     },
 
     addIntro: function() {
@@ -120,6 +124,13 @@ module.exports =  {
 
         charts.init();
         dates.init();
+    },
+
+    addBios: function() {
+        $.each(data.Bios, function(i, person) {
+            var template = handlebars.compile(bio);
+            $('.mapped-event__chart[data-chart="' + person.event + '"]').append(template(person));
+        }.bind(this));
     },
 
     makeId: function() {

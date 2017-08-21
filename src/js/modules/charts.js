@@ -5,7 +5,7 @@ module.exports =  {
     init: function() {
         this.setSizes();
 
-        $('.mapped-event__chart').each(function(i, el) {
+        $('.mapped-event__chart--connections').each(function(i, el) {
             this.createChart(el);
         }.bind(this));
 
