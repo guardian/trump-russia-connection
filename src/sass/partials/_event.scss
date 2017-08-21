@@ -64,3 +64,18 @@
         margin-left: -160px;
     }
 }
+
+.mapped-event__divider {
+    @include mq(tablet) {
+        margin-left: -110px;
+    }
+
+    @include mq(leftCol) {
+        margin-top: 36px;
+        margin-left: -160px;
+    }
+
+    @include mq(wide) {
+        margin-left: -240px;
+    }
+}
