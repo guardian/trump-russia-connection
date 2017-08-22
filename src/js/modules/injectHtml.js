@@ -87,6 +87,7 @@ module.exports =  {
         this.addEvents();
         this.addChartData();
         this.addBios();
+        this.markAsLoaded();
     },
 
     addIntro: function() {
@@ -142,5 +143,9 @@ module.exports =  {
         }
 
         return text;
+    },
+
+    markAsLoaded: function() {
+        $('.mapped').addClass('has-loaded');
     }
 };

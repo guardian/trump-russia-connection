@@ -1,5 +1,10 @@
 .mapped-timeline {
     background-color: $c-off-white;
+    display: none;
+
+    .has-loaded & {
+        display: block;
+    }
 
     .gs-container {
         overflow-x: scroll;

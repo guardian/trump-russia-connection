@@ -1,9 +1,17 @@
-.trump-tracker {
-    font-family: 'Guardian Egyptian Web';
-    font-weight: 400;
-    background-color: $c-white;
+.mapped {
+    min-height: 100vh;
+    background-color: $c-off-white;
 
-    h1, h2, h3, h4, h5, p {
-        margin: 0;
+    .l-side-margins:first-of-type {
+        height: 100vh;
+    }
+
+    &.has-loaded {
+        min-height: none;
+        background-color: $c-white;
+
+        .l-side-margins:first-of-type {
+            height: auto;
+        }
     }
 }

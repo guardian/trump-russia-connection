@@ -4,6 +4,11 @@
     background-size: 120vw;
     background-color: $c-off-white;
     background-repeat: no-repeat;
+    min-height: 100%;
+
+    .has-loaded & {
+        min-height: none;
+    }
 
     @include mq(tablet) {
         background-size: 1000px;
