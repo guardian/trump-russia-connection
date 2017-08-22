@@ -1,3 +1,42 @@
+.mapped-bios {
+    display: flex;
+}
+
 .mapped-bio {
-    // display: flex;
+    margin-right: 20px;
+    min-width: 220px;
+}
+
+.mapped-bio__image-wrapper {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 120px;
+    height: 120px;
+}
+
+.maped-bio__image {
+    width: 100%;
+    height: auto;
+}
+
+.mapped-bio__name {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.3;
+    color: $c-red;
+    margin-top: 4px;
+}
+
+.mapped-bio__description {
+    display: block;
+    color: $c-black;
+}
+
+.mapped-bio__copy {
+    font-family: 'Guardian Sans Web';
+    font-size: 14px;
+    line-height: 1.4;
+    color: $c-black;
+    margin: 4px 0 12px;
 }
