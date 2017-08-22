@@ -68,6 +68,8 @@ module.exports =  {
     },
 
     hightlightCurrentSection: function() {
+        $('.mapped-timeline__entry').removeClass('is-current');
+
         for (var i in events) {
             if (scrollTop + height > events[i]) {
                 $('.mapped-timeline__entry').removeClass('is-current');
