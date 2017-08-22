@@ -5,7 +5,7 @@ module.exports =  {
     init: function() {
         this.setSizes();
 
-        $('.mapped-event__chart--connections').each(function(i, el) {
+        $('.mapped-connections').each(function(i, el) {
             this.createChart(el);
         }.bind(this));
 
@@ -84,7 +84,7 @@ module.exports =  {
             .selectAll('line')
             .data(links)
             .enter().append('text')
-            .attr('class', 'mapped-chart__link-copy')
+            .attr('class', 'mapped-connections__link-copy')
             .attr('text-anchor', 'middle')
 
             linkCopy.append('textPath')
@@ -104,7 +104,7 @@ module.exports =  {
             .attr('style', 'fill: white;');
 
         var image = node.append('image')
-            .attr('class', 'mapped-chart__image')
+            .attr('class', 'mapped-connections__image')
             .attr('width', radius * 2)
             .attr('height', radius * 2)
             .attr('clip-path', function(d) { return 'url(#' + d.id + ')' })
@@ -112,7 +112,7 @@ module.exports =  {
 
         var label = node.append('text')
             .attr('text-anchor', 'middle')
-            .attr('class', 'mapped-chart__name');
+            .attr('class', 'mapped-connections__name');
 
             label.append('tspan')
             .attr('width', radius * 2)

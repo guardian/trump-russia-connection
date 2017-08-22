@@ -1,7 +1,22 @@
-.mapped-chart__image {
+.mapped-connections {
+    width: 100%;
+    height: 500px;
+
+    @include mq(tablet) {
+        margin-left: -110px;
+        width: 700px;
+    }
+
+    @include mq(desktop) {
+        width: 920px;
+    }
+
+    @include mq(wide) {
+        margin-left: -160px;
+    }
 }
 
-.mapped-chart__image-wrapper {
+.mapped-connections__image-wrapper {
     position: relative;
     width: 100%;
     height: 0;
@@ -12,7 +27,7 @@
     overflow: hidden;
 }
 
-.mapped-chart__name {
+.mapped-connections__name {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
     font-size: 16px;
@@ -22,12 +37,8 @@
     margin-top: 4px;
 }
 
-.mapped-chart__link-copy {
+.mapped-connections__link-copy {
     font-family: 'Guardian Text Sans Web';
     font-size: 16px;
     color: $c-black;
-}
-
-.links line {
-    stroke: $c-grey;
 }
