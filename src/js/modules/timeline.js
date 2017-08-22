@@ -1,13 +1,16 @@
 var $ = require('../vendor/jquery.js');
 var scrollTo = require('../modules/scrollTo.js');
 
-var scrollTop, position, height;
+var scrollTop, position, height, events;
 
 module.exports =  {
     init: function() {
         this.populateTimeline();
         this.bindings();
         this.getDimensions();
+        $(document).ready(function() {
+            this.getDimensions();
+        }.bind(this));
     },
 
     bindings: function() {
@@ -21,7 +24,7 @@ module.exports =  {
         }.bind(this));
 
         $(window).resize(function() {
-            this.getPositon();
+            this.getDimensions();
         }.bind(this));
     },
 
@@ -45,13 +48,29 @@ module.exports =  {
             $('.mapped').removeClass('is-fixed');
             $('.mapped-header').attr('style', '');
         }
+
+        this.hightlightCurrentSection();
     },
 
     getDimensions: function() {
         $('.mapped-timeline').removeClass('is-fixed');
         position = $('.mapped-timeline').position().top;
         height = $('.mapped-timeline').height();
+        events = {};
+
+        $('.mapped-event__event').each(function(i, el) {
+            events[$(el).attr('id')] = $(el).offset().top;
+        }.bind(this));
 
         this.onScroll();
+    },
+
+    hightlightCurrentSection: function() {
+        for (var i in events) {
+            if (scrollTop + height > events[i]) {
+                $('.mapped-timeline__entry').removeClass('is-current');
+                $('.mapped-timeline__entry[href="#' + i + '"]').addClass('is-current');
+            }
+        }
     }
 };
