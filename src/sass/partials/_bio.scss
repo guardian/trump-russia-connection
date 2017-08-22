@@ -1,10 +1,34 @@
 .mapped-bios {
     display: flex;
+    flex-wrap: wrap;
+
+    @include mq(tablet) {
+        margin-left: -110px;
+        width: 720px;
+    }
+
+    @include mq(desktop) {
+        margin-left: 0;
+        width: 620px;
+    }
+
+    @include mq(wide) {
+        width: 1280px;
+        margin-left: -240px;
+    }
 }
 
 .mapped-bio {
     margin-right: 20px;
-    min-width: 220px;
+    max-width: calc(50% - 20px);
+
+    @include mq(tablet) {
+        max-width: calc(33% - 20px);
+    }
+
+    @include mq(wide) {
+        width: 220px;
+    }
 }
 
 .mapped-bio__image-wrapper {
