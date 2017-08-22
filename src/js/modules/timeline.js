@@ -8,6 +8,7 @@ module.exports =  {
         this.populateTimeline();
         this.bindings();
         this.getDimensions();
+
         $(document).ready(function() {
             this.getDimensions();
         }.bind(this));
@@ -25,6 +26,7 @@ module.exports =  {
 
         $(window).resize(function() {
             this.getDimensions();
+            this.onScroll();
         }.bind(this));
     },
 
@@ -53,7 +55,7 @@ module.exports =  {
     },
 
     getDimensions: function() {
-        $('.mapped-timeline').removeClass('is-fixed');
+        $('.mapped').removeClass('is-fixed');
         position = $('.mapped-timeline').position().top;
         height = $('.mapped-timeline').height();
         events = {};
