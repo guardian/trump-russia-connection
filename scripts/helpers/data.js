@@ -27,14 +27,6 @@ function setFurniture() {
     data.furniture = furniture;
 }
 
-function getImages() {
-    for (var i = 0; i < 3; i++) {
-//    for (var i = 0; i < data.playlist.length; i++) {
-        data.playlist[i].artistImage = gridToAssets(data.playlist[i].artistImage, 'related', 'yellow');
-        data.playlist[i].pickedByImage = gridToAssets(data.playlist[i].pickedByImage, 'related', 'blue');
-    }
-}
-
 module.exports = function getData(explainer) {
     if (explainer.name !== 'local') {
         data = request('GET', explainer.data);
