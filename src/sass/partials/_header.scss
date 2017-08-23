@@ -1,42 +1,38 @@
 .mapped-header {
     position: relative;
-    // background-image: url('@@assetPath@@/assets/images/header--mobile.jpg');
+    background-image: url('@@assetPath@@/assets/images/header--mobile.jpg');
     background-position: center top;
     background-size: 120vw;
-    background-color: $c-off-white;
     background-repeat: no-repeat;
+    background-color: $c-off-white;
     min-height: 100%;
+
+    @include mq(tablet) {
+        background: $c-off-white;
+    }
 
     .has-loaded & {
         min-height: none;
     }
-
-    @include mq(tablet) {
-        background-size: 1000px;
-        // background-image: url('@@assetPath@@/assets/images/header.jpg');
-        background-position: center -50px;
-    }
-
-    @include mq(desktop) {
-        background-size: 1400px;
-    }
-
-    @include mq(leftCol) {
-        background-size: auto;
-    }
-
-    @include mq(wide) {
-        background-position: calc(50% - 30px) -50px;
-        background-size: auto;
-    }
 }
 
 .mapped-illustration {
+    display: none;
     position: absolute;
     left: -100%;
     right: -100%;
-    height: 100%;
     margin: auto;
+
+    @include mq(tablet) {
+        display: block;
+        width: 1200px;
+        height: 400px;
+    }
+
+    @include mq(desktop) {
+        width: 1470px;
+        height: 570px;
+    }
 
     @include mq(leftCol) {
         width: 1550px;
@@ -62,6 +58,20 @@
     animation: circlePop 0.3s ease-in;
     animation-fill-mode: forwards;
     opacity: 0;
+    display: none;
+
+    @include mq(tablet) {
+        display: block;
+        height: 140px;
+        width: 140px;
+        transform: translateX(-50%) translateY(-50%);
+    }
+
+    @include mq(desktop) {
+        height: 185px;
+        width: 185px;
+        transform: none;
+    }
 }
 
 .mapped-illustration__image--1 {
