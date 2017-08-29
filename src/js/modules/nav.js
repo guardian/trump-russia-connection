@@ -5,7 +5,7 @@ var scrollTop, position, height, events;
 
 module.exports =  {
     init: function() {
-        this.populateTimeline();
+        this.populateNav();
         this.bindings();
         this.getDimensions();
 
@@ -15,7 +15,7 @@ module.exports =  {
     },
 
     bindings: function() {
-        $('.mapped-timeline__entry').click(function(e) {
+        $('.mapped-nav__entry').click(function(e) {
             e.preventDefault();
             scrollTo.scrollTo(e.currentTarget.hash);
         }.bind(this));
@@ -30,13 +30,13 @@ module.exports =  {
         }.bind(this));
     },
 
-    populateTimeline: function() {
-        $('.mapped-event__event').each(function(i, el) {
-            var date = $(el).find('.mapped-event__number').text();
-            var title = $(el).find('.mapped-event__title').text();
+    populateNav: function() {
+        $('.mapped-section').each(function(i, el) {
+            var number = $(el).find('.mapped-section__number').text();
+            var title = $(el).find('.mapped-section__title').text();
             var id = $(el).attr('id')
 
-            $('.mapped-timeline__inner').append('<a href=\'#' + id + '\' class=\'mapped-timeline__entry\'>' + date + '<span>' + title + '</span></a>');
+            $('.mapped-nav__inner').append('<a href=\'#' + id + '\' class=\'mapped-nav__entry\'>' + number + '<span>' + title + '</span></a>');
         }.bind(this));
     },
 
@@ -56,11 +56,11 @@ module.exports =  {
 
     getDimensions: function() {
         $('.mapped').removeClass('is-fixed');
-        position = $('.mapped-timeline').position().top;
-        height = $('.mapped-timeline').height();
+        position = $('.mapped-nav').position().top;
+        height = $('.mapped-nav').height();
         events = {};
 
-        $('.mapped-event__event').each(function(i, el) {
+        $('.mapped-section').each(function(i, el) {
             events[$(el).attr('id')] = $(el).offset().top;
         }.bind(this));
 
@@ -68,12 +68,12 @@ module.exports =  {
     },
 
     hightlightCurrentSection: function() {
-        $('.mapped-timeline__entry').removeClass('is-current');
+        $('.mapped-nav__entry').removeClass('is-current');
 
         for (var i in events) {
             if (scrollTop + height > events[i]) {
-                $('.mapped-timeline__entry').removeClass('is-current');
-                $('.mapped-timeline__entry[href="#' + i + '"]').addClass('is-current');
+                $('.mapped-nav__entry').removeClass('is-current');
+                $('.mapped-nav__entry[href="#' + i + '"]').addClass('is-current');
             }
         }
     }

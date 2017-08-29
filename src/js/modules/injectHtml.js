@@ -4,7 +4,7 @@ var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
 var charts = require('../modules/charts.js');
-var dates = require('../modules/dates.js');
+var nav = require('../modules/nav.js');
 
 var section = require('../templates/section.html');
 var bio = require('../templates/bio.html');
@@ -119,7 +119,7 @@ module.exports =  {
         }
 
         charts.init();
-        dates.init();
+        nav.init();
     },
 
     addBios: function() {
@@ -131,9 +131,7 @@ module.exports =  {
 
     addTimelines: function() {
         $.each(data.Timeline, function(i, timelineMoment) {
-    
             var template = handlebars.compile(timeline);
-            console.log(template);
             $('.mapped-section__chart[data-chart="' + timelineMoment.section + '"]').append(template(timelineMoment));
         })
     },

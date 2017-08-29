@@ -1,4 +1,4 @@
-.mapped-timeline {
+.mapped-nav {
     background-color: $c-off-white;
     display: none;
 
@@ -25,10 +25,7 @@
     }
 }
 
-.mapped-timeline__inner {
-    overflow: hidden;
-    width: 100%;
-    min-width: 2010px;
+.mapped-nav__inner {
     padding: 6px 10px;
 
     @include mq(mobileLandscape) {
@@ -36,11 +33,11 @@
     }
 }
 
-.mapped-timeline__entry {
-    float: left;
+.mapped-nav__entry {
+    display: table-cell;
     padding-right: 9px;
     border-right: 1px $c-grey solid;
-    margin-right: 10px;
+    padding-left: 10px;
     height: 50px;
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
