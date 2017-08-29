@@ -81,7 +81,7 @@ module.exports =  {
 
         $('.mapped-nav .gs-container').stop().animate({
             scrollLeft: scrollTo
-        }, 400);
+        }, 100);
 
     },
 
