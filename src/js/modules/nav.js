@@ -43,20 +43,19 @@ module.exports =  {
     onScroll: function() {
         scrollTop = $(window).scrollTop();
 
-        if (scrollTop - height > position) {
-            $('.mapped').addClass('is-fixed');
-            $('.mapped-header').attr('style', 'padding-bottom: ' + height + 'px')
+        if (scrollTop > position) {
+            this.fixNav();
         } else {
-            $('.mapped').removeClass('is-fixed');
-            $('.mapped-header').attr('style', '');
+            this.unFixNav();
         }
 
         this.hightlightCurrentSection();
     },
 
     getDimensions: function() {
-        $('.mapped').removeClass('is-fixed');
-        position = $('.mapped-nav').position().top;
+        this.unFixNav();
+
+        position = $('.mapped-nav').offset().top;
         height = $('.mapped-nav').height();
         events = {};
 
@@ -76,5 +75,15 @@ module.exports =  {
                 $('.mapped-nav__entry[href="#' + i + '"]').addClass('is-current');
             }
         }
+    },
+
+    fixNav: function() {
+        $('.mapped').addClass('is-fixed');
+        $('.mapped-header').attr('style', 'padding-bottom: ' + height + 'px');
+    },
+
+    unFixNav: function() {
+        $('.mapped').removeClass('is-fixed');
+        $('.mapped-header').attr('style', '');
     }
 };
