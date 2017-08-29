@@ -1,4 +1,10 @@
-<div class='mapped-nav__event'>
-    <h2 class='mapped-nav__title'>{{ name }} <span class='mapped-nav__date'>{{ date }}</h2>
-    {{{ marked copy }}}
+<div class='mapped-timeline__event'>
+    <div class='mapped-timeline__image-wrapper'>
+        <img class='mapped-timeline__image' src='{{ image }}' />
+    </div>
+
+    <h2 class='mapped-timeline__title'>{{ event }} <span class='mapped-timeline__date'>{{ date }}</h2>
+    <div class='mapped-timeline__copy'>
+        {{{ marked copy }}}
+    </div>
 </div>

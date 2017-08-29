@@ -130,9 +130,9 @@ module.exports =  {
     },
 
     addTimelines: function() {
-        $.each(data.Timeline, function(i, timelineMoment) {
+        $.each(data.Timeline, function(i, event) {
             var template = handlebars.compile(timeline);
-            $('.mapped-section__chart[data-chart="' + timelineMoment.section + '"]').append(template(timelineMoment));
+            $('.mapped-section__chart[data-chart="' + event.section + '"]').append(template(event));
         })
     },
 
