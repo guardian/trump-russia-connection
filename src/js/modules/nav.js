@@ -69,12 +69,20 @@ module.exports =  {
     hightlightCurrentSection: function() {
         $('.mapped-nav__entry').removeClass('is-current');
 
+        var scrollTo = 0;
+
         for (var i in events) {
             if (scrollTop + height > events[i]) {
                 $('.mapped-nav__entry').removeClass('is-current');
                 $('.mapped-nav__entry[href="#' + i + '"]').addClass('is-current');
+                scrollTo = $('.mapped-nav__entry.is-current').position().left;
             }
         }
+
+        $('.mapped-nav .gs-container').stop().animate({
+            scrollLeft: scrollTo
+        }, 400);
+
     },
 
     fixNav: function() {

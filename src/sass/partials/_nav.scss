@@ -26,7 +26,9 @@
 }
 
 .mapped-nav__inner {
+    position: relative; // for jQuery to get offset of each entry
     padding: 6px 10px;
+    width: min-content;
 
     @include mq(mobileLandscape) {
         padding: 10px 20px;
@@ -61,6 +63,10 @@
     &:hover,
     &:focus {
         text-decoration: none;
+    }
+
+    @at-root div#{&} {
+        padding-left: 0;
     }
 
     span {
