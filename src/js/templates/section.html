@@ -1,0 +1,24 @@
+<div class='gs-container'>
+    {{#each this}}
+        <div class='mapped-section' id='{{ handelise title }}'>
+            <h2 class='mapped-section__number'>{{ numberise @index }}</h2>
+            <h2 class='mapped-section__title'>{{ title }}</h2>
+
+            {{{ marked intro }}}
+
+            {{#if_eq type 'connections'}}
+                <svg class='mapped-section__chart mapped-connections' data-chart='{{ title }}' viewBox='0 0 920 500' preserveAspectRatio='xMinYMin meet'></svg>
+            {{/if_eq}}
+
+            {{#if_eq type 'bios'}}
+                <div class='mapped-section__chart mapped-bios' data-chart='{{ title }}'></div>
+            {{/if_eq}}
+
+            {{#if_eq type 'timeline'}}
+                <div class='mapped-section__chart mapped-timeline' data-chart='{{ title }}'></div>
+            {{/if_eq}}
+
+            <img class='mapped-section__divider' src='{{ assetPath }}/assets/images/divider.svg' />
+        </div>
+    {{/each}}
+</div>

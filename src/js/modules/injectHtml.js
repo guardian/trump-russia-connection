@@ -6,8 +6,9 @@ var lastUpdated = require('../modules/lastUpdated.js');
 var charts = require('../modules/charts.js');
 var dates = require('../modules/dates.js');
 
-var event = require('../templates/event.html');
+var section = require('../templates/section.html');
 var bio = require('../templates/bio.html');
+var timeline = require('../templates/timeline.html');
 
 var data;
 
@@ -23,17 +24,6 @@ module.exports =  {
                 return opts.fn(this);
             else
                 return opts.inverse(this);
-        });
-
-        handlebars.registerHelper('getImage', function(url, size) {
-            var crop = url.split('?crop=')[1];
-            var url = url.replace('gutools.co.uk', 'guim.co.uk');
-                url = url.replace('http://', 'https://');
-                url = url.replace('images/', '');
-                url = url.split('?')[0];
-                url = url + '/' + crop + '/' + size + '.jpg';
-
-            return '<img class="trump-tracker__day-image" src="' + url + '"/>'
         });
 
         handlebars.registerHelper('handelise', function(string) {
@@ -70,6 +60,10 @@ module.exports =  {
                 data.Bios[i].image = this.getImageUrl(data.Bios[i].image);
             }
 
+            for (var i in data.Timeline) {
+//                 data.Timeline[i].image = this.getImageUrl(data.Timeline[i].image);
+            }
+
             delete data.Main;
 
             this.injectHtml();
@@ -84,9 +78,10 @@ module.exports =  {
     injectHtml: function() {
         this.addIntro();
         this.addTimestamp();
-        this.addEvents();
+        this.addSections();
         this.addChartData();
         this.addBios();
+        this.addTimelines();
         this.markAsLoaded();
     },
 
@@ -103,24 +98,24 @@ module.exports =  {
         $('.mapped-header__last-updated').text('Last Updated ' + lastUpdated.convert(data.lastUpdated));
     },
 
-    addEvents: function() {
-        var template = handlebars.compile(event);
-        $('.mapped-events').html(template(data.Events));
+    addSections: function() {
+        var template = handlebars.compile(section);
+        $('.mapped-sections').html(template(data.Sections));
     },
 
     addChartData: function() {
         var chartData = {};
 
         $.each(data.Connections, function(i, person) {
-            if (!chartData[person.event]) {
-                chartData[person.event] = [];
+            if (!chartData[person.section]) {
+                chartData[person.section] = [];
             }
 
-            chartData[person.event].push(person)
+            chartData[person.section].push(person)
         }.bind(this));
 
         for (var i in chartData) {
-            $('.mapped-event__chart[data-chart="' + i + '"]').attr('data-json', JSON.stringify(chartData[i]));
+            $('.mapped-section__chart[data-chart="' + i + '"]').attr('data-json', JSON.stringify(chartData[i]));
         }
 
         charts.init();
@@ -130,8 +125,17 @@ module.exports =  {
     addBios: function() {
         $.each(data.Bios, function(i, person) {
             var template = handlebars.compile(bio);
-            $('.mapped-event__chart[data-chart="' + person.event + '"]').append(template(person));
+            $('.mapped-section__chart[data-chart="' + person.section + '"]').append(template(person));
         }.bind(this));
+    },
+
+    addTimelines: function() {
+        $.each(data.Timeline, function(i, timelineMoment) {
+    
+            var template = handlebars.compile(timeline);
+            console.log(template);
+            $('.mapped-section__chart[data-chart="' + timelineMoment.section + '"]').append(template(timelineMoment));
+        })
     },
 
     makeId: function() {

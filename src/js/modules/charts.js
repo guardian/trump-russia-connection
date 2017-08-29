@@ -23,7 +23,7 @@ module.exports =  {
     },
 
     setSizes: function() {
-        $('.mapped-event__chart').each(function(i, el) {
+        $('.mapped-connections').each(function(i, el) {
             var width = $(el).width();
             var height = $(el).height();
 

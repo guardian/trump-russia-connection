@@ -1,4 +1,4 @@
-.mapped-event__event {
+.mapped-section {
     position: relative;
     padding: 6px 10px;
     max-width: 620px;
@@ -22,8 +22,8 @@
     }
 }
 
-.mapped-event__number,
-.mapped-event__title {
+.mapped-section__number,
+.mapped-section__title {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
     font-size: 20px;
@@ -35,7 +35,7 @@
     }
 }
 
-.mapped-event__number {
+.mapped-section__number {
     @include mq(leftCol) {
         position: absolute;
         top: 6px;
@@ -43,13 +43,16 @@
     }
 }
 
-.mapped-event__title {
+.mapped-section__title {
     color: $c-red;
 }
 
-.mapped-event__divider {
+.mapped-section__divider {
+    opacity: .25;
+
     @include mq(tablet) {
         margin-left: -110px;
+        margin-bottom: -15px;
     }
 
     @include mq(leftCol) {
