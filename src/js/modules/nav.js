@@ -72,10 +72,10 @@ module.exports =  {
         var scrollTo = 0;
 
         for (var i in events) {
-            if (scrollTop + height > events[i]) {
+            if (scrollTop + height + 40 > events[i]) {
                 $('.mapped-nav__entry').removeClass('is-current');
                 $('.mapped-nav__entry[href="#' + i + '"]').addClass('is-current');
-                scrollTo = $('.mapped-nav__entry.is-current').position().left;
+                scrollTo = $('.mapped-nav__entry.is-current').position().left - 10;
             }
         }
 
