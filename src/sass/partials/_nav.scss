@@ -1,5 +1,5 @@
 .mapped-nav {
-    background-color: $c-off-white;
+    background-color: darken($c-off-white, 5%);
     display: none;
 
     .has-loaded & {
@@ -27,11 +27,11 @@
 
 .mapped-nav__inner {
     position: relative; // for jQuery to get offset of each entry
-    padding: 6px 10px;
+    padding: 6px 0;
     width: min-content;
 
     @include mq(mobileLandscape) {
-        padding: 10px 20px;
+        padding: 10px 0px;
     }
 }
 
@@ -45,7 +45,7 @@
     font-weight: 900;
     font-size: 20px;
     line-height: 1.1;
-    color: $c-black;
+    color: $c-red;
     transition: 0.3s ease-out color;
 
     @include mq(tablet) {
@@ -65,16 +65,15 @@
         text-decoration: none;
     }
 
-    @at-root div#{&} {
-        padding-left: 0;
-    }
+    &:first-of-type {
+        padding-left: 10px;
 
-    span {
-        display: block;
-        color: $c-red;
+        @include mq(mobileLandscape) {
+            padding-left: 20px;
+        }
     }
 
     &.is-current {
-        color: $c-red;
+        color: $c-black;
     }
 }

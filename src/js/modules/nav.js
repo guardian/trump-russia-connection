@@ -36,7 +36,7 @@ module.exports =  {
             var title = $(el).find('.mapped-section__title').text();
             var id = $(el).attr('id')
 
-            $('.mapped-nav__inner').append('<a href=\'#' + id + '\' class=\'mapped-nav__entry\'>' + number + '<span>' + title + '</span></a>');
+            $('.mapped-nav__inner').append('<a href=\'#' + id + '\' class=\'mapped-nav__entry\'>' + title + '</a>');
         }.bind(this));
     },
 
