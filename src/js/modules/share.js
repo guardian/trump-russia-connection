@@ -1,7 +1,7 @@
 var $ = require('../vendor/jquery.js');
 
 var pageUrl = window.location.href;
-var title = 'Donald Trump\'s first 100 days as president – daily updates';
+var title = 'Mapped: Trump and Russia';
 
 module.exports =  {
     init: function() {
@@ -9,19 +9,9 @@ module.exports =  {
     },
 
     setLinks: function() {
-        $('.trump-tracker-header__share-link--twitter').attr('href', this.getTwitterLink());
-        $('.trump-tracker-header__share-link--facebook').attr('href', this.getFacebookLink());
-        $('.trump-tracker-header__share-link--email').attr('href', this.getEmailLink());
-    },
-
-    setDayLinks: function() {
-        $('.trump-tracker__day').each(function(index, e) {
-            // the #day-0 needs to be added
-            
-            $(e).find('.trump-tracker__day-share-button--twitter').attr('href', this.getTwitterLink($(e).attr('id')));
-            $(e).find('.trump-tracker__day-share-button--facebook').attr('href', this.getFacebookLink($(e).attr('id')));
-            $(e).find('.trump-tracker__day-share-button--email').attr('href', this.getEmailLink($(e).attr('id')));
-        }.bind(this));
+        $('.mapped-share__button--twitter .mapped-share__link').attr('href', this.getTwitterLink());
+        $('.mapped-share__button--facebook .mapped-share__link').attr('href', this.getFacebookLink());
+        $('.mapped-share__button--email .mapped-share__link').attr('href', this.getEmailLink());
     },
 
     getTwitterLink: function(id) {

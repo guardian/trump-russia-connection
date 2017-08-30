@@ -126,6 +126,12 @@
         color: $c-black;
     }
 
+    &:first-of-type {
+        @include mq(wide) {
+            min-width: 164px;
+        }
+    }
+
     &.is-current {
         color: $c-black;
     }
