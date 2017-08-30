@@ -35,14 +35,14 @@ module.exports =  {
         var svg = d3.select(target),
             width = $(target).width(),
             height = $(target).height(),
-            radius = 30,
+            radius = 32,
             data = JSON.parse($(target).attr('data-json'))
             length = data.length,
             links = this.buildLinks(data);
 
         var simulation = d3.forceSimulation()
-            .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(function(d) { return d.linkCopy.length * 19 })) // Set ID and make sure distance between nodes that have linkCopy are given space
-            .force('collision', d3.forceCollide().radius(function(d) { return radius * (d.name.length * 0.18); })) // Make sure nodes have space around them based on their name length
+            .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(function(d) { return d.linkCopy.length * 22 })) // Set ID and make sure distance between nodes that have linkCopy are given space
+            .force('collision', d3.forceCollide().radius(function(d) { return radius * (d.name.length * 0.17); })) // Make sure nodes have space around them based on their name length
             .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
@@ -77,7 +77,7 @@ module.exports =  {
 
             linkCopy.append('textPath')
             .attr('xlink:href', function(d) { return '#' + d.linkId })
-            .attr('startOffset', radius * 3.5)
+            .attr('startOffset', '50%')
             .text(function(d) { return d.linkCopy });
 
         var node = svg.append('g')
@@ -87,7 +87,7 @@ module.exports =  {
             .enter()
 
         var boxes = node.append('rect')
-            .attr('width', radius * 2)
+            .attr('width', function(d) { return d.name.length * 9 } )
             .attr('height', 20)
             .attr('style', 'fill: white;');
 
@@ -128,7 +128,7 @@ module.exports =  {
                 .attr('y', function(d) { return d.y + (radius * 2) + 20; });
 
             boxes
-                .attr('x', function(d) { return d.x })
+                .attr('x', function(d) { return d.x - (d.name.length * 2.5)})
                 .attr('y', function(d) { return d.y + (radius * 2) + 5});
 
             link
