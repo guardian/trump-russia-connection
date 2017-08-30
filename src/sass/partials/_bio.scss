@@ -1,20 +1,10 @@
 .mapped-bios {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 
     @include mq(tablet) {
-        margin-left: -110px;
-        width: 720px;
-    }
-
-    @include mq(desktop) {
-        margin-left: 0;
         width: 620px;
-    }
-
-    @include mq(wide) {
-        width: 1280px;
-        margin-left: -240px;
     }
 }
 

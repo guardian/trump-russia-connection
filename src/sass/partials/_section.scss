@@ -22,45 +22,26 @@
     }
 }
 
-.mapped-section__number,
 .mapped-section__title {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
     font-size: 20px;
     line-height: 1.2;
-    color: $c-black;
+    color: $c-red;
 
     @include mq(tablet) {
-        font-size: 24px;
+        font-size: 32px;
     }
-}
-
-.mapped-section__number {
-    @include mq(leftCol) {
-        position: absolute;
-        top: 6px;
-        left: 20px;
-    }
-}
-
-.mapped-section__title {
-    color: $c-red;
 }
 
 .mapped-section__divider {
     opacity: .25;
 
     @include mq(tablet) {
-        margin-left: -110px;
         margin-bottom: -15px;
     }
 
     @include mq(leftCol) {
         margin-top: 36px;
-        margin-left: -160px;
-    }
-
-    @include mq(wide) {
-        margin-left: -240px;
     }
 }
