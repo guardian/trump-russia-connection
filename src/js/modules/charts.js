@@ -39,11 +39,10 @@ module.exports =  {
             data = JSON.parse($(target).attr('data-json'))
             length = data.length,
             links = this.buildLinks(data);
-            console.log(data);
 
         var simulation = d3.forceSimulation()
             .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(function(d) { return d.linkCopy.length * 19 })) // Set ID and make sure distance between nodes that have linkCopy are given space
-            .force('collision', d3.forceCollide().radius(function(d) { console.log(d); return radius * (d.name.length * 0.18); })) // Make sure nodes have space around them based on their name length
+            .force('collision', d3.forceCollide().radius(function(d) { return radius * (d.name.length * 0.18); })) // Make sure nodes have space around them based on their name length
             .force('center', d3.forceCenter(width / 2 , height / 2))
             .stop();
 
