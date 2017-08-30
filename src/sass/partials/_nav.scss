@@ -14,12 +14,16 @@
         overflow-x: scroll;
         backface-visibility: hidden;
         -webkit-overflow-scrolling: touch;
-        margin: 6px 64px;
-        border-left: 1px solid $c-grey;
-        border-right: 1px solid $c-grey;
+        margin: 6px 0;
 
         @include mq(mobileLandscape) {
+            margin: 10px 0;
+        }
+
+        @include mq(desktop) {
             margin: 10px 64px;
+            border-left: 1px solid $c-grey;
+            border-right: 1px solid $c-grey;
         }
 
         &::-webkit-scrollbar {
@@ -49,6 +53,11 @@
     bottom: 0;
     z-index: 2;
     pointer-events: none;
+    display: none;
+
+    @include mq(desktop) {
+        display: block;
+    }
 }
 
 .mapped-nav__button {
@@ -102,17 +111,10 @@
     line-height: 1.1;
     color: $c-red;
     transition: 0.3s ease-out color;
+    min-width: 200px;
 
     @include mq(tablet) {
         font-size: 24px;
-    }
-
-    @include mq(leftCol) {
-        min-width: 160px;
-    }
-
-    @include mq(wide) {
-        min-width: 220px;
     }
 
     &:hover,
