@@ -75,11 +75,11 @@ module.exports =  {
             if (scrollTop + height + 40 > events[i]) {
                 $('.mapped-nav__entry').removeClass('is-current');
                 $('.mapped-nav__entry[href="#' + i + '"]').addClass('is-current');
-                scrollTo = $('.mapped-nav__entry.is-current').position().left - 10;
+                scrollTo = $('.mapped-nav__entry.is-current').position().left;
             }
         }
 
-        $('.mapped-nav .gs-container').stop().animate({
+        $('.mapped-nav__scroll').stop().animate({
             scrollLeft: scrollTo
         }, 100);
 

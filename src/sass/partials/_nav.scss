@@ -7,9 +7,20 @@
     }
 
     .gs-container {
+        overflow: auto;
+    }
+
+    .mapped-nav__scroll {
         overflow-x: scroll;
         backface-visibility: hidden;
         -webkit-overflow-scrolling: touch;
+        margin: 6px 64px;
+        border-left: 1px solid $c-grey;
+        border-right: 1px solid $c-grey;
+
+        @include mq(mobileLandscape) {
+            margin: 10px 64px;
+        }
 
         &::-webkit-scrollbar {
             display: none;
@@ -27,11 +38,55 @@
 
 .mapped-nav__inner {
     position: relative; // for jQuery to get offset of each entry
-    padding: 6px 0;
     width: min-content;
+}
+
+.mapped-nav__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.mapped-nav__button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    background-color: $c-red;
+    background-image: url('@@assetPath@@/assets/images/arrow-right.svg');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    transition: 0.3s ease-out background-color;
+    pointer-events: auto;
+
+    &:hover {
+        background-color: $c-black;
+    }
+}
+
+.mapped-nav__button--left {
+    transform: rotate(180deg);
+    left: 10px;
 
     @include mq(mobileLandscape) {
-        padding: 10px 0px;
+        left: 20px;
+    }
+}
+
+.mapped-nav__button--right {
+    right: 10px;
+
+    @include mq(mobileLandscape) {
+        right: 20px;
     }
 }
 
@@ -65,12 +120,8 @@
         text-decoration: none;
     }
 
-    &:first-of-type {
-        padding-left: 10px;
-
-        @include mq(mobileLandscape) {
-            padding-left: 20px;
-        }
+    &:hover {
+        color: $c-black;
     }
 
     &.is-current {
