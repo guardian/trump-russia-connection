@@ -1,7 +1,7 @@
 var $ = require('../vendor/jquery.js');
 var scrollTo = require('../modules/scrollTo.js');
 
-var scrollTop, position, height, events;
+var scrollTop, position, height, events, hoverInterval;
 
 module.exports =  {
     init: function() {
@@ -19,6 +19,20 @@ module.exports =  {
             e.preventDefault();
             scrollTo.scrollTo(e.currentTarget.hash);
         }.bind(this));
+
+        $('.mapped-nav__button').on('mouseenter', function(e) {
+            var $target = $(e.currentTarget);
+
+            hoverInterval = setInterval(function() {
+                if ($target.hasClass('mapped-nav__button--left')) {
+                    this.onButtonHover('left');
+                } else {
+                    this.onButtonHover('right');
+                }
+            }.bind(this), 100);
+        }.bind(this)).on('mouseleave', function() {
+            hoverInterval && clearInterval(hoverInterval);
+        });
 
         $(window).scroll(function() {
             this.onScroll();
@@ -79,10 +93,7 @@ module.exports =  {
             }
         }
 
-        $('.mapped-nav__scroll').stop().animate({
-            scrollLeft: scrollTo
-        }, 100);
-
+        this.scrollNav(scrollTo);
     },
 
     fixNav: function() {
@@ -93,5 +104,21 @@ module.exports =  {
     unFixNav: function() {
         $('.mapped').removeClass('is-fixed');
         $('.mapped-header').attr('style', '');
+    },
+
+    onButtonHover: function(direction) {
+        var existingScrollPosition = $('.mapped-nav__scroll').scrollLeft();
+
+        if (direction == 'left') {
+            this.scrollNav(existingScrollPosition - 40);
+        } else {
+            this.scrollNav(existingScrollPosition + 40);
+        }
+    },
+
+    scrollNav: function(value) {
+        $('.mapped-nav__scroll').stop().animate({
+            scrollLeft: value
+        }, 100);
     }
 };
