@@ -31,15 +31,6 @@ module.exports =  {
         });
     },
 
-    getCollision: function(radius, length) {
-        console.log(thing);
-        if (length > 0) {
-            return length * 10;
-        } else {
-            return radius;
-        }
-    },
-
     createChart: function(target) {
         var svg = d3.select(target),
             width = $(target).width(),
