@@ -5,13 +5,4 @@
     .l-side-margins:first-of-type {
         height: 100vh;
     }
-
-    &.has-loaded {
-        min-height: none;
-        background-color: $c-white;
-
-        .l-side-margins:first-of-type {
-            height: auto;
-        }
-    }
 }

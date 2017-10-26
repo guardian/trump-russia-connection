@@ -3,12 +3,6 @@ var handlebars = require('handlebars');
 var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
-var charts = require('../modules/charts.js');
-var nav = require('../modules/nav.js');
-
-var section = require('../templates/section.html');
-var bio = require('../templates/bio.html');
-var timeline = require('../templates/timeline.html');
 
 var data;
 
@@ -78,10 +72,6 @@ module.exports =  {
     injectHtml: function() {
         this.addIntro();
         this.addTimestamp();
-        this.addSections();
-        this.addChartData();
-        this.addBios();
-        this.addTimelines();
         this.markAsLoaded();
     },
 
@@ -96,44 +86,6 @@ module.exports =  {
 
     addTimestamp: function() {
         $('.mapped-header__last-updated').text('Last Updated ' + lastUpdated.convert(data.lastUpdated));
-    },
-
-    addSections: function() {
-        var template = handlebars.compile(section);
-        $('.mapped-sections').html(template(data.Sections));
-    },
-
-    addChartData: function() {
-        var chartData = {};
-
-        $.each(data.Connections, function(i, person) {
-            if (!chartData[person.section]) {
-                chartData[person.section] = [];
-            }
-
-            chartData[person.section].push(person)
-        }.bind(this));
-
-        for (var i in chartData) {
-            $('.mapped-section__chart[data-chart="' + i + '"]').attr('data-json', JSON.stringify(chartData[i]));
-        }
-
-        charts.init();
-        nav.init();
-    },
-
-    addBios: function() {
-        $.each(data.Bios, function(i, person) {
-            var template = handlebars.compile(bio);
-            $('.mapped-section__chart[data-chart="' + person.section + '"]').append(template(person));
-        }.bind(this));
-    },
-
-    addTimelines: function() {
-        $.each(data.Timeline, function(i, event) {
-            var template = handlebars.compile(timeline);
-            $('.mapped-section__chart[data-chart="' + event.section + '"]').append(template(event));
-        })
     },
 
     makeId: function() {
