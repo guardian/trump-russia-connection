@@ -2,7 +2,8 @@ var $ = require('../vendor/jquery.js');
 
 var card = require('../templates/card.html');
 
-var cardTemplate;
+var cardTemplate,
+    stack = [];
 
 module.exports =  {
     init: function() {
@@ -27,22 +28,28 @@ module.exports =  {
     },
 
     openQuestion: function(question) {
-        console.log(question);
-        // check if question already exists
         var id = $(question).attr('href').replace('#', '');
         var data = this.getData(id);
+
+        stack = stack.filter(function(question){
+            return question !== id;
+        });
+
+        stack.unshift(id);
+
+        stack = stack.slice(0,3);
 
         if (!$('body').hasClass('is-open')) {
             $('body').addClass('is-open');
         }
 
-        $('.mapped').append(cardTemplate(data));
-
-        this.cycleQuestions();
+        if ($('#' + id).length === 0) {
+            $('.mapped').append(cardTemplate(data));
+        }
 
         setTimeout(function() {
-            $('#' + id).addClass('is-visible');
-        }, 100);
+            this.cycleQuestions();
+        }.bind(this), 100);
 
         this.bindings(); // bindings need to be refreshed as new questions have appeared
     },
@@ -60,11 +67,19 @@ module.exports =  {
         $('.is-visible').removeClass('is-visible');
         $('.is-visible-1').removeClass('is-visible-1');
         $('.is-visible-2').removeClass('is-visible-2');
+
+        stack = [];
     },
 
     cycleQuestions: function() {
-        $('.is-visible-2').removeClass('is-visible-2');
-        $('.is-visible-1').removeClass('is-visible-1').addClass('is-visible-2');
-        $('.is-visible').removeClass('is-visible').addClass('is-visible-1');
+        $('.mapped-card').removeClass('is-visible is-visible-1 is-visible-2');
+
+        for (var i in stack) {
+            if (i == 0) {
+                $('#' + stack[i]).addClass('is-visible');
+            }  else {
+                $('#' + stack[i]).addClass('is-visible-' + i);
+            }
+        }
     }
 };
