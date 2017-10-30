@@ -22,8 +22,8 @@ module.exports =  {
         });
 
         handlebars.registerHelper('handelise', function(string) {
-            return string.replace(/ /g, '-').replace('?', '').toLowerCase();
-        });
+            return this.handelise(string);
+        }.bind(this));
 
         handlebars.registerHelper('numberise', function(number) {
             return (parseInt(number) + 1)  + '.'
@@ -49,7 +49,7 @@ module.exports =  {
             }
 
             for (var i in data.Questions) {
-                data.Questions[i].id = data.Questions[i].question.replace(/ /g, '-').replace('?', '').toLowerCase();
+                data.Questions[i].id = this.handelise(data.Questions[i].question);
             }
 
             for (var i in data.Connections) {
@@ -121,5 +121,9 @@ module.exports =  {
         $('.mapped').addClass('has-loaded');
 
         question.init();
+    },
+
+    handelise: function(string) {
+        return string.replace(/ /g, '-').replace('?', '').replace(/'/g, '');
     }
 };
