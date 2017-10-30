@@ -1,12 +1,11 @@
 var $ = require('../vendor/jquery.js');
-var handlebars = require('handlebars');
 var marked = require('marked');
+window.handlebars = require('handlebars');
 
 var lastUpdated = require('../modules/lastUpdated.js');
+var question = require('../modules/question.js');
 
 var questionHtml = require('../templates/question.html');
-
-var data;
 
 module.exports =  {
     init: function() {
@@ -41,10 +40,14 @@ module.exports =  {
 
     getJson: function() {
         $.getJSON('https://interactive.guim.co.uk/docsdata-test/1As_b3BQ4IE444OgwNg-fqTF4tSfC51f4KKPSmQXtwhc.json', function(response) {
-            data = response.sheets;
+            window.data = response.sheets;
 
             for (var i in data.Main) {
                 data[data.Main[i].key] = data.Main[i].option;
+            }
+
+            for (var i in data.Questions) {
+                data.Questions[i].id = data.Questions[i].question.replace(/ /g, '-').toLowerCase();
             }
 
             for (var i in data.Connections) {
@@ -114,5 +117,7 @@ module.exports =  {
 
     markAsLoaded: function() {
         $('.mapped').addClass('has-loaded');
+
+        question.init();
     }
 };
