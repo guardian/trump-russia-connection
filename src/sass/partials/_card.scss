@@ -150,10 +150,9 @@
     position: relative;
 
     @include mq(desktop) {
-        min-width: 300px;
         max-width: 460px;
         flex-shrink: 2;
-        padding-left: 40px;
+        padding-left: 30px;
     }
 }
 
