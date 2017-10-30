@@ -234,6 +234,11 @@
 
 .mapped-header__divider {
     margin-left: -10px;
+    display: none;
+
+    .has-loaded & {
+        display: block;
+    }
 }
 
 .mapped-header__bar {
@@ -287,6 +292,14 @@
 .mapped-header__drop-cap__inner {
     font-size: 5.4em;
     line-height: 0.89;
+}
+
+.mapped-header__questions {
+    display: none;
+
+    .has-loaded & {
+        display: block;
+    }
 }
 
 .mapped-header__question-title {
