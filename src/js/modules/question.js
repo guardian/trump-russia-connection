@@ -15,7 +15,7 @@ module.exports =  {
         $('a.is-question').unbind('click');
         $('a.is-question').bind('click', function(e) {
             e.preventDefault();
-            this.openQuestion(e.target);
+            this.openQuestion(e.currentTarget);
         }.bind(this));
 
         $('.mapped-mask').click(function() {
