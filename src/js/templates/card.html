@@ -13,7 +13,19 @@
         </div>
 
         <div class='mapped-card__questions'>
-            QUESTIONS GO HERE
+            <img class='mapped-card__divider' src='@@assetPath@@/assets/images/divider.svg' />
+
+            {{#if relatedQuestion1}}
+                {{> question question=relatedQuestion1 }}
+            {{/if}}
+
+            {{#if relatedQuestion2}}
+                {{> question question=relatedQuestion2 }}
+            {{/if}}
+
+            {{#if relatedQuestion3}}
+                {{> question question=relatedQuestion3 }}
+            {{/if}}
         </div>
     </div>
 </div>

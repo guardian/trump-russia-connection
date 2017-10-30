@@ -34,6 +34,14 @@ module.exports =  {
         }
 
         $('.mapped').append(cardTemplate(data));
+
+        this.cycleQuestions();
+
+        setTimeout(function() {
+            $('#' + id).addClass('is-visible');
+        }, 100);
+
+        this.bindings(); // bindings need to be refreshed as new questions have appeared
     },
 
     getData: function(id) {
@@ -46,5 +54,11 @@ module.exports =  {
 
     closeQuestions: function() {
         $('body').removeClass('is-open');
+    },
+
+    cycleQuestions: function() {
+        $('.is-visible-2').removeClass('is-visible-2');
+        $('.is-visible-1').removeClass('is-visible-1').addClass('is-visible-2');
+        $('.is-visible').removeClass('is-visible').addClass('is-visible-1');
     }
 };

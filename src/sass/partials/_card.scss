@@ -1,14 +1,44 @@
 .mapped-card {
     position: fixed;
     margin: auto;
-    top: 10vh;
+    top: 100vh;
     left: 0;
     right: 0;
     bottom: 0;
     z-index: 1400;
+    transition: transform 0.3s ease-in;
+    transition-delay: 0.1s;
 
     @include mq(wide) {
         width: 1000px;
+    }
+
+    &.is-visible {
+        transform: translateY(-90vh);
+    }
+
+    &.is-visible-1 {
+        transform: translateY(-92vh) scale(.95);
+
+        .mapped-card__content {
+            display: none;
+        }
+
+        .mapped-card__title {
+            background-color: darken($c-red, 5%);
+        }
+    }
+
+    &.is-visible-2 {
+        transform: translateY(-94vh) scale(.9);
+
+        .mapped-card__content {
+            display: none;
+        }
+
+        .mapped-card__title {
+            background-color: darken($c-red, 10%);
+        }
     }
 }
 
@@ -36,6 +66,42 @@
 }
 
 .mapped-card__content {
-    padding: 3px 6px;
+    padding: 6px;
     background-color: $c-white;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    @include mq(desktop) {
+        display: flex;
+    }
+}
+
+.mapped-card__copy {
+    @include mq(desktop) {
+        width: 620px;
+        margin-right: 20px;
+        padding: 3px;
+    }
+}
+
+.mapped-card__questions {
+    position: relative;
+
+    @include mq(desktop) {
+        min-width: 300px;
+        max-width: 460px;
+        flex-shrink: 2;
+        padding-left: 40px;
+    }
+}
+
+.mapped-card__divider {
+    @include mq(desktop) {
+        position: absolute;
+        transform: rotate(90deg);
+        transform-origin: left;
+        left: 10px;
+        height: 38px;
+        top: -10px;
+    }
 }

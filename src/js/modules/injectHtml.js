@@ -22,7 +22,7 @@ module.exports =  {
         });
 
         handlebars.registerHelper('handelise', function(string) {
-            return string.replace(/ /g, '-').toLowerCase();
+            return string.replace(/ /g, '-').replace('?', '').toLowerCase();
         });
 
         handlebars.registerHelper('numberise', function(number) {
@@ -36,6 +36,8 @@ module.exports =  {
         handlebars.registerHelper('marked', function(string) {
             return marked(string);
         });
+
+        handlebars.registerPartial('question', questionHtml);
     },
 
     getJson: function() {
@@ -47,7 +49,7 @@ module.exports =  {
             }
 
             for (var i in data.Questions) {
-                data.Questions[i].id = data.Questions[i].question.replace(/ /g, '-').toLowerCase();
+                data.Questions[i].id = data.Questions[i].question.replace(/ /g, '-').replace('?', '').toLowerCase();
             }
 
             for (var i in data.Connections) {
