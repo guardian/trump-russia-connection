@@ -4,6 +4,8 @@ var marked = require('marked');
 
 var lastUpdated = require('../modules/lastUpdated.js');
 
+var questionHtml = require('../templates/question.html');
+
 var data;
 
 module.exports =  {
@@ -71,6 +73,7 @@ module.exports =  {
 
     injectHtml: function() {
         this.addIntro();
+        this.addStarterQuestions();
         this.addTimestamp();
         this.markAsLoaded();
     },
@@ -86,6 +89,16 @@ module.exports =  {
 
     addTimestamp: function() {
         $('.mapped-header__last-updated').text('Last Updated ' + lastUpdated.convert(data.lastUpdated));
+    },
+
+    addStarterQuestions: function() {
+        var questionTemplate = handlebars.compile(questionHtml);
+
+        for (var i in data.Questions) {
+            if (data.Questions[i].question !== '' && data.Questions[i].isStarter) {
+                $('.mapped-header__questions').append(questionTemplate(data.Questions[i]));
+            }
+        }
     },
 
     makeId: function() {

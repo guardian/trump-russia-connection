@@ -1,0 +1,42 @@
+.mapped-question {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 0;
+    margin: 6px 0;
+    list-style: none;
+
+    @include mq(tablet) {
+        font-size: 24px;
+        line-height: 1;
+    }
+}
+
+.mapped-question__link {
+    color: $c-red;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+        color: $c-black;
+
+        .mapped-question__button {
+            background-color: $c-red;
+        }
+    }
+}
+
+.mapped-question__button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+    height: 32px;
+    margin-top: -2px;
+    border-radius: 16px;
+    background-color: $c-black;
+    background-image: url('@@assetPath@@/assets/images/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-size: 90%;
+    background-position: center center;
+}
