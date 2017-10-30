@@ -121,10 +121,12 @@
 }
 
 .mapped-card__copy {
+    padding: 3px;
+    padding-bottom: 12px;
+
     @include mq(desktop) {
         width: 620px;
         margin-right: 20px;
-        padding: 3px;
     }
 }
 

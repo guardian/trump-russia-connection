@@ -39,8 +39,8 @@ module.exports =  {
 
         stack = stack.slice(0,3);
 
-        if (!$('body').hasClass('is-open')) {
-            $('body').addClass('is-open');
+        if (!$('html').hasClass('is-open')) {
+            $('html').addClass('is-open');
         }
 
         if ($('#' + id).length === 0) {
@@ -63,7 +63,7 @@ module.exports =  {
     },
 
     closeQuestions: function() {
-        $('body').removeClass('is-open');
+        $('html').removeClass('is-open');
         $('.mapped-card').addClass('is-closing');
 
         setTimeout(function() {
