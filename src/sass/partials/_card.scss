@@ -22,8 +22,8 @@
         transform: translateY(-92vh) scale(.95);
         z-index: 1401;
 
-        .mapped-card__content {
-            display: none;
+        &:hover {
+            transform: translateY(-93vh) scale(.95);
         }
 
         .mapped-card__title {
@@ -34,20 +34,57 @@
     &.is-visible-2 {
         transform: translateY(-94vh) scale(.9);
 
-        .mapped-card__content {
-            display: none;
+        &:hover {
+            transform: translateY(-95vh) scale(.9);
         }
 
         .mapped-card__title {
             background-color: darken($c-red, 10%);
         }
     }
+
+    &.is-visible-1,
+    &.is-visible-2 {
+        .mapped-card__title-link {
+            pointer-events: auto;
+        }
+
+        .mapped-card__content {
+            display: none;
+        }
+
+        .mapped-card__title-question {
+            opacity: .2;
+        }
+
+        &:hover {
+            .mapped-card__title-question {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .mapped-card__title {
+    position: relative;
     background-color: $c-red;
     color: $c-white;
     padding: 3px 6px 32px;
+}
+
+.mapped-card__title-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: $c-white;
+    text-decoration: none;
+    pointer-events: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 .mapped-card__title-question {
@@ -56,6 +93,7 @@
     font-size: 16px;
     line-height: 1.1;
     margin: 0;
+    transition: opacity 0.2s ease-out;
 
     @include mq(tablet) {
         font-size: 24px;
