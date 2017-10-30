@@ -288,3 +288,16 @@
     font-size: 5.4em;
     line-height: 0.89;
 }
+
+.mapped-header__question-title {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.1;
+    margin-top: 0;
+
+    @include mq(tablet) {
+        font-size: 24px;
+        line-height: 1;
+    }
+}
