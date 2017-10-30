@@ -1,6 +1,6 @@
 var $ = require('../vendor/jquery.js');
 
-var card = require('../templates/question.html');
+var card = require('../templates/card.html');
 
 var cardTemplate;
 
@@ -33,7 +33,7 @@ module.exports =  {
             $('body').addClass('is-open');
         }
 
-        $('mapped').append(cardTemplate(data));
+        $('.mapped').append(cardTemplate(data));
     },
 
     getData: function(id) {

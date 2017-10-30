@@ -1,0 +1,41 @@
+.mapped-card {
+    position: fixed;
+    margin: auto;
+    top: 10vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1400;
+
+    @include mq(wide) {
+        width: 1000px;
+    }
+}
+
+.mapped-card__title {
+    background-color: $c-red;
+    color: $c-white;
+    padding: 3px 6px 32px;
+}
+
+.mapped-card__title-question {
+    font-family: 'Guardian Egyptian Web';
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 1.1;
+    margin: 0;
+
+    @include mq(tablet) {
+        font-size: 24px;
+    }
+
+    @include mq(desktop) {
+        font-size: 38px;
+        line-height: 1.2;
+    }
+}
+
+.mapped-card__content {
+    padding: 3px 6px;
+    background-color: $c-white;
+}
