@@ -11,7 +11,8 @@ module.exports =  {
     },
 
     bindings: function() {
-        $('a.is-question').click(function(e) {
+        $('a.is-question').unbind('click');
+        $('a.is-question').bind('click', function(e) {
             e.preventDefault();
             this.openQuestion(e.target);
         }.bind(this));
@@ -26,6 +27,7 @@ module.exports =  {
     },
 
     openQuestion: function(question) {
+        console.log(question);
         // check if question already exists
         var id = $(question).attr('href').replace('#', '');
         var data = this.getData(id);
@@ -55,6 +57,9 @@ module.exports =  {
 
     closeQuestions: function() {
         $('body').removeClass('is-open');
+        $('.is-visible').removeClass('is-visible');
+        $('.is-visible-1').removeClass('is-visible-1');
+        $('.is-visible-2').removeClass('is-visible-2');
     },
 
     cycleQuestions: function() {

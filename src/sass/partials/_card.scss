@@ -15,10 +15,12 @@
 
     &.is-visible {
         transform: translateY(-90vh);
+        z-index: 1402;
     }
 
     &.is-visible-1 {
         transform: translateY(-92vh) scale(.95);
+        z-index: 1401;
 
         .mapped-card__content {
             display: none;
