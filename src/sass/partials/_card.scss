@@ -63,6 +63,10 @@
             }
         }
     }
+
+    &.is-closing {
+        transform: translateY(0);
+    }
 }
 
 .mapped-card__title {

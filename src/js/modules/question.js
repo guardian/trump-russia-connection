@@ -64,9 +64,11 @@ module.exports =  {
 
     closeQuestions: function() {
         $('body').removeClass('is-open');
-        $('.is-visible').removeClass('is-visible');
-        $('.is-visible-1').removeClass('is-visible-1');
-        $('.is-visible-2').removeClass('is-visible-2');
+        $('.mapped-card').addClass('is-closing');
+
+        setTimeout(function() {
+            $('.mapped-card').removeClass('is-visible is-visible-1 is-visible-2 is-closing');
+        }, 400);
 
         stack = [];
     },
