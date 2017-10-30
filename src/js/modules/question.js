@@ -26,6 +26,7 @@ module.exports =  {
     },
 
     openQuestion: function(question) {
+        // check if question already exists
         var id = $(question).attr('href').replace('#', '');
         var data = this.getData(id);
 
