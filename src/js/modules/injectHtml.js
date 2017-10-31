@@ -124,6 +124,6 @@ module.exports =  {
     },
 
     handelise: function(string) {
-        return string.replace(/ /g, '-').replace('?', '').replace(/'/g, '');
+        return string.replace(/ /g, '-').replace('?', '').replace(/'/g, '').replace(':', '').replace('/', '');
     }
 };
