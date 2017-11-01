@@ -1,5 +1,7 @@
 var $ = require('../vendor/jquery.js');
 
+var bios = require('../modules/bios.js');
+
 var card = require('../templates/card.html');
 
 var cardTemplate,
@@ -47,6 +49,8 @@ module.exports =  {
             $('.mapped').append(cardTemplate(data));
         }
 
+        this.addChart(id);
+
         setTimeout(function() {
             this.cycleQuestions();
         }.bind(this), 100);
@@ -83,5 +87,17 @@ module.exports =  {
                 $('#' + stack[i]).addClass('is-visible-' + i);
             }
         }
+    },
+
+    addChart: function(id) {
+        var type = $('#' + id).attr('data-type');
+
+        if (!$('#' + id).hasClass('has-chart')) {
+            if (type === 'bios') {
+                bios.create(id);
+            }
+        }
+
+        $('#' + id).addClass('has-chart');
     }
 };

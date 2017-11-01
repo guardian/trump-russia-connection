@@ -1,4 +1,4 @@
-<div class='mapped-card' id='{{ handelise question }}'>
+<div class='mapped-card' id='{{ handelise question }}' data-type='{{ type }}'>
     <div class='mapped-card__title'>
         <h1 class='mapped-card__title-question'>{{ question }}</h1>
         <a class='mapped-card__title-link is-question' href='#{{ id }}'></a>
@@ -10,7 +10,17 @@
                 {{{ marked copy }}}
             </div>
 
-            <!-- chart goes here -->
+            {{#if_eq type 'connections'}}
+                <svg class='mapped-card__chart mapped-connections' data-chart='{{ title }}' preserveAspectRatio='xMinYMin meet'></svg>
+            {{/if_eq}}
+
+            {{#if_eq type 'bios'}}
+                <div class='mapped-card__chart mapped-bios' data-chart='{{ title }}'></div>
+            {{/if_eq}}
+
+            {{#if_eq type 'timeline'}}
+                <div class='mapped-card__chart mapped-timeline' data-chart='{{ title }}'></div>
+            {{/if_eq}}
         </div>
 
         <div class='mapped-card__questions'>

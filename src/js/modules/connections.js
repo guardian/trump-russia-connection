@@ -2,36 +2,10 @@ var $ = require('../vendor/jquery.js');
 var d3 = require('d3');
 
 module.exports =  {
-    init: function() {
-        this.setSizes();
-
-        $('.mapped-connections').each(function(i, el) {
-            this.createChart(el);
-        }.bind(this));
-
-        this.bindings();
-    },
-
-    getAssetPath: function() {
-        return $('.mapped').attr('data-asset-path');
-    },
-
-    bindings: function() {
-        $(window).resize(function() {
-            this.setSizes();
-        }.bind(this));
-    },
-
-    setSizes: function() {
-        $('.mapped-connections').each(function(i, el) {
-            var width = $(el).width();
-            var height = $(el).height();
-
-            $(el).attr('viewbox', '0 0 ' + width + ' ' + height);
-        });
-    },
-
     createChart: function(target) {
+        this.setSizes(target);
+        this.bindings(target);
+
         var svg = d3.select(target),
             width = $(target).width(),
             height = $(target).height(),
@@ -142,6 +116,23 @@ module.exports =  {
                 .attr('style', function(d) { if (d.source.x > d.target.x) { return 'transform-origin: center center; transform: rotate(180deg) translateY(-20px)'; } })
 
         }
+    },
+
+    getAssetPath: function() {
+        return $('.mapped').attr('data-asset-path');
+    },
+
+    bindings: function(target) {
+        $(window).resize(function() {
+            this.setSizes(target);
+        }.bind(this));
+    },
+
+    setSizes: function(target) {
+        var width = $(target).width();
+        var height = $(target).height();
+
+        $(el).attr('viewbox', '0 0' + width + ' ' + height);
     },
 
     buildLinks: function(data) {
