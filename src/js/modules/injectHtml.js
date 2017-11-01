@@ -112,7 +112,11 @@ module.exports =  {
 
         for (var i in data.Questions) {
             if (data.Questions[i].question !== '' && data.Questions[i].isStarter) {
-                $('.mapped-header__questions').append(questionTemplate(data.Questions[i]));
+                $('.mapped-header__questions--starter').append(questionTemplate(data.Questions[i]));
+            }
+
+            if (data.Questions[i].question !== '' && data.Questions[i].isLatest) {
+                $('.mapped-header__questions--latest').append(questionTemplate(data.Questions[i]));
             }
         }
     },
