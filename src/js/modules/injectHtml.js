@@ -37,6 +37,14 @@ module.exports =  {
             return marked(string);
         });
 
+        handlebars.registerHelper('relativeTime', function(string) {
+            if (string) {
+                return lastUpdated.convert(string);
+            } else {
+                return '';
+            }
+        });
+
         handlebars.registerPartial('question', questionHtml);
     },
 
