@@ -53,15 +53,18 @@ module.exports =  {
             }
 
             for (var i in data.Connections) {
-                data.Connections[i].id = 'person-' + this.makeId();
+                data.Connections[i].id = this.handelise(data.Connections[i].question);
+                data.Connections[i].personId = 'person-' + this.makeId();
                 data.Connections[i].image = this.getImageUrl(data.Connections[i].image);
             }
 
             for (var i in data.Bios) {
+                data.Bios[i].id = this.handelise(data.Bios[i].question);
                 data.Bios[i].image = this.getImageUrl(data.Bios[i].image);
             }
 
             for (var i in data.Timeline) {
+                data.Timeline[i].id = this.handelise(data.Timeline[i].question);
 //                 data.Timeline[i].image = this.getImageUrl(data.Timeline[i].image);
             }
 

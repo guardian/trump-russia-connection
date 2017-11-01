@@ -2,7 +2,11 @@ var $ = require('../vendor/jquery.js');
 var d3 = require('d3');
 
 module.exports =  {
-    createChart: function(target) {
+    create: function(id) {
+        var target = '#' + id + ' .mapped-card__chart';
+
+        console.log(target);
+
         this.setSizes(target);
         this.bindings(target);
 
@@ -10,9 +14,12 @@ module.exports =  {
             width = $(target).width(),
             height = $(target).height(),
             radius = 32,
-            data = JSON.parse($(target).attr('data-json'))
+            data = this.getData(id);
             length = data.length,
             links = this.buildLinks(data);
+
+            console.log(data);
+            console.log(svg);
 
         var simulation = d3.forceSimulation()
             .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(function(d) { return d.linkCopy.length * 22 })) // Set ID and make sure distance between nodes that have linkCopy are given space
@@ -128,11 +135,23 @@ module.exports =  {
         }.bind(this));
     },
 
+    getData: function(id) {
+        var chartData = [];
+
+        $.each(data.Connections, function(i, person) {
+            if (person.id === id) {
+                chartData.push(person);
+            }
+        }.bind(this));
+
+        return chartData;
+    },
+
     setSizes: function(target) {
         var width = $(target).width();
         var height = $(target).height();
 
-        $(el).attr('viewbox', '0 0' + width + ' ' + height);
+        $(target).attr('viewbox', '0 0' + width + ' ' + height);
     },
 
     buildLinks: function(data) {
