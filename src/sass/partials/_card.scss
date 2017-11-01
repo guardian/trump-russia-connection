@@ -65,7 +65,9 @@
         }
 
         .mapped-card__content {
-            display: none;
+            @include mq(tablet) {
+                display: none;
+            }
         }
 
         .mapped-card__title-question {
