@@ -1,7 +1,7 @@
 .mapped-question {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.2;
     padding: 0;
     margin: 6px 0;
@@ -9,7 +9,7 @@
 
     @include mq(tablet) {
         font-size: 24px;
-        line-height: 1;
+        line-height: 1.2;
     }
 }
 
@@ -39,10 +39,4 @@
     background-repeat: no-repeat;
     background-size: 90%;
     background-position: center center;
-
-    @include mq(desktop) {
-        width: 38px;
-        height: 38px;
-        border-radius: 19px;
-    }
 }

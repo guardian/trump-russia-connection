@@ -29,16 +29,16 @@
     }
 
     &.is-visible {
-        transform: translateY(-90vh);
+        transform: translateY(calc(-100vh + 120px));
         z-index: 1402;
     }
 
     &.is-visible-1 {
-        transform: translateY(-92vh) scale(.95);
+        transform: translateY(calc(-100vh + 100px)) scale(.95);
         z-index: 1401;
 
         &:hover {
-            transform: translateY(-93vh) scale(.95);
+            transform: translateY(calc(-100vh + 60px)) scale(.95);
         }
 
         .mapped-card__title {
@@ -47,10 +47,10 @@
     }
 
     &.is-visible-2 {
-        transform: translateY(-94vh) scale(.9);
+        transform: translateY(calc(-100vh + 80px)) scale(.9);
 
         &:hover {
-            transform: translateY(-95vh) scale(.9);
+            transform: translateY(calc(-100vh + 40px)) scale(.9);
         }
 
         .mapped-card__title {
@@ -109,8 +109,8 @@
 .mapped-card__title-question {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
-    font-size: 16px;
-    line-height: 1.1;
+    font-size: 18px;
+    line-height: 1.3;
     margin: 0;
     transition: opacity 0.2s ease-out;
 
