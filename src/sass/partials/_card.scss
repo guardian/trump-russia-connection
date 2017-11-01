@@ -29,16 +29,16 @@
     }
 
     &.is-visible {
-        transform: translateY(calc(-100vh + 120px));
+        transform: translateY(calc(-100vh + 100px));
         z-index: 1402;
     }
 
     &.is-visible-1 {
-        transform: translateY(calc(-100vh + 100px)) scale(.95);
+        transform: translateY(calc(-100vh + 80px)) scale(.95);
         z-index: 1401;
 
         &:hover {
-            transform: translateY(calc(-100vh + 60px)) scale(.95);
+            transform: translateY(calc(-100vh + 40px)) scale(.95);
         }
 
         .mapped-card__title {
@@ -47,10 +47,10 @@
     }
 
     &.is-visible-2 {
-        transform: translateY(calc(-100vh + 80px)) scale(.9);
+        transform: translateY(calc(-100vh + 60px)) scale(.9);
 
         &:hover {
-            transform: translateY(calc(-100vh + 40px)) scale(.9);
+            transform: translateY(calc(-100vh + 20px)) scale(.9);
         }
 
         .mapped-card__title {
@@ -132,6 +132,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     flex-grow: 2;
+    max-height: calc(100vh - 170px);
 
     @include mq(desktop) {
         display: flex;
