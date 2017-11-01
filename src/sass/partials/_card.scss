@@ -137,6 +137,13 @@
     @include mq(desktop) {
         display: flex;
         padding: 0;
+        max-height: calc(100vh - 280px);
+    }
+}
+
+.mapped-card__body {
+    @include mq(desktop) {
+        width: 620px;
     }
 }
 
@@ -169,7 +176,7 @@
         flex-shrink: 2;
         padding-top: 0;
         padding-left: 30px;
-        background-position: left 6px;
+        background-position: 9px 6px;
         background-image: url('@@assetPath@@/assets/images/vertical-divider.svg');
         background-size: 16px;
     }

@@ -1,6 +1,7 @@
 var $ = require('../vendor/jquery.js');
 
 var bios = require('../modules/bios.js');
+var timeline = require('../modules/timeline.js');
 
 var card = require('../templates/card.html');
 
@@ -95,6 +96,10 @@ module.exports =  {
         if (!$('#' + id).hasClass('has-chart')) {
             if (type === 'bios') {
                 bios.create(id);
+            }
+
+            if (type === 'timeline') {
+                timeline.create(id);
             }
         }
 
