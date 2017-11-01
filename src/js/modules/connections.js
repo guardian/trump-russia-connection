@@ -32,7 +32,7 @@ module.exports =  {
         var circle = defs.selectAll('circle')
             .data(data)
             .enter().append('clipPath')
-            .attr('id', function(d) { return d.id })
+            .attr('id', function(d) { return d.personId })
             .append('circle')
             .attr('r', radius);
 
@@ -76,7 +76,7 @@ module.exports =  {
             .attr('class', 'mapped-connections__image')
             .attr('width', radius * 2)
             .attr('height', radius * 2)
-            .attr('clip-path', function(d) { return 'url(#' + d.id + ')' })
+            .attr('clip-path', function(d) { return 'url(#' + d.personId + ')' })
             .attr('xlink:href',  function(d) {return d.image } );
 
         var label = node.append('text')
