@@ -34,27 +34,27 @@
     }
 
     &.is-visible-1 {
-        transform: translateY(calc(-100vh + 80px)) scale(.95);
+        transform: translateY(calc(-100vh + 65px)) scale(.95);
         z-index: 1401;
 
         &:hover {
-            transform: translateY(calc(-100vh + 40px)) scale(.95);
+            transform: translateY(calc(-100vh + 62px)) scale(.95);
         }
 
         .mapped-card__title {
-            background-color: darken($c-red, 5%);
+            background-color: #d34225;
         }
     }
 
     &.is-visible-2 {
-        transform: translateY(calc(-100vh + 60px)) scale(.9);
+        transform: translateY(calc(-100vh + 32px)) scale(.9);
 
         &:hover {
-            transform: translateY(calc(-100vh + 20px)) scale(.9);
+            transform: translateY(calc(-100vh + 29px)) scale(.9);
         }
 
         .mapped-card__title {
-            background-color: darken($c-red, 10%);
+            background-color: #af2f15;
         }
     }
 
@@ -64,20 +64,8 @@
             pointer-events: auto;
         }
 
-        .mapped-card__content {
-            @include mq(tablet) {
-                display: none;
-            }
-        }
-
         .mapped-card__title-question {
-            opacity: .2;
-        }
-
-        &:hover {
-            .mapped-card__title-question {
-                opacity: 1;
-            }
+            font-size: 24px;
         }
     }
 
@@ -90,7 +78,7 @@
     position: relative;
     background-color: $c-red;
     color: $c-white;
-    padding: 3px 6px 24px;
+    padding: 6px 6px 24px;
 }
 
 .mapped-card__last-updated {

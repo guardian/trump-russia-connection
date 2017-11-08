@@ -33,15 +33,24 @@ module.exports =  {
 
     openQuestion: function(question) {
         var id = $(question).attr('href').replace('#', '');
+        var isFromStack = $(question).hasClass('mapped-card__title-link');
         var data = this.getData(id);
 
-        stack = stack.filter(function(question){
-            return question !== id;
-        });
+        // if user clicks on same question do nothing
+        if (id === stack[0]) {
+            return false;
+        }
 
-        stack.unshift(id);
+        if (isFromStack) {
+            console.log(stack);
+            console.log(id);
+            console.log(stack.indexOf(id));
+            stack = stack.slice(stack.indexOf(id), stack.length);
+        } else {
+            stack.unshift(id);
+        }
 
-        stack = stack.slice(0,3);
+        console.log(stack);
 
         if (!$('html').hasClass('is-open')) {
             $('html').addClass('is-open');
