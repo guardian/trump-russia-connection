@@ -57,7 +57,11 @@ module.exports =  {
             }
 
             for (var i in data.Questions) {
-                data.Questions[i].id = this.handelise(data.Questions[i].question);
+                if (data.Questions[i].question !== '') {
+                    data.Questions[i].id = this.handelise(data.Questions[i].question);
+                } else {
+                    delete data.Questions[i];
+                }
             }
 
             for (var i in data.Connections) {
@@ -118,6 +122,8 @@ module.exports =  {
             if (data.Questions[i].question !== '' && data.Questions[i].isLatest) {
                 $('.mapped-header__questions--latest').append(questionTemplate(data.Questions[i]));
             }
+
+            $('.mapped-header__questions--index').append(questionTemplate(data.Questions[i]));
         }
     },
 
