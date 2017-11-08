@@ -4,8 +4,8 @@
     top: 100vh;
     left: 0;
     right: 0;
-    z-index: 1400;
-    transition: transform 0.3s ease-in;
+    z-index: 1404;
+    transition: transform 0.3s ease-in, opacity 0.1s ease-in;
     transition-delay: 0.1s;
     transform-origin: top;
     min-height: 100vh;
@@ -47,11 +47,9 @@
     }
 
     &.is-visible-2 {
+        opacity: 0;
+        z-index: 1400;
         transform: translateY(calc(-100vh + 32px)) scale(.9);
-
-        &:hover {
-            transform: translateY(calc(-100vh + 29px)) scale(.9);
-        }
 
         .mapped-card__title {
             background-color: #af2f15;
@@ -112,7 +110,7 @@
     font-size: 18px;
     line-height: 1.2;
     margin: 0;
-    transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out, font-size 0.2s ease-out;
 
     @include mq(tablet) {
         font-size: 24px;
