@@ -83,7 +83,7 @@ module.exports =  {
 
         setTimeout(function() {
             $('.mapped-card').removeClass('is-visible is-visible-1 is-visible-2 is-closing');
-        }, 400);
+        }, 500);
 
         stack = [];
     },

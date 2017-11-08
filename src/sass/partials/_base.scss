@@ -19,7 +19,7 @@
     transition: background 0.3s ease-in;
 
     .is-open & {
-        background-color: rgba(0, 0, 0, 0.9);
+        background-color: rgba(0, 0, 0, 0.78);
         pointer-events: auto;
     }
 }
