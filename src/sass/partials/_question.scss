@@ -1,5 +1,6 @@
 .mapped-question {
     position: relative;
+    overflow: hidden;
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
     font-size: 18px;
@@ -36,6 +37,10 @@
         height: 4px;
         background-color: $c-red;
     }
+
+    &.mapped-question--has-image {
+        padding-bottom: 36%;
+    }
 }
 
 .mapped-question__link {
@@ -68,4 +73,11 @@
         height: 30px;
         border-radius: 16px;
     }
+}
+
+.mapped-question__image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
 }

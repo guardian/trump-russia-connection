@@ -36,6 +36,8 @@ module.exports =  {
         var isFromStack = $(question).hasClass('mapped-card__title-link');
         var data = this.getData(id);
 
+        console.log(data);
+
         // if user clicks on same question do nothing
         if (id === stack[0]) {
             return false;
@@ -65,11 +67,37 @@ module.exports =  {
     },
 
     getData: function(id) {
+        var question = this.getQuestion(id);
+
+        console.log(this.getQuestion(question.relatedQuestion1));
+
+        if (question.relatedQuestion1) {
+            question.relatedImage1 = this.getQuestion(this.handelise(question.relatedQuestion1)).image;
+        }
+
+        if (question.relatedQuestion2) {
+            question.relatedImage2 = this.getQuestion(this.handelise(question.relatedQuestion2)).image;
+        }
+
+        if (question.relatedQuestion3) {
+            question.relatedImage3 = this.getQuestion(this.handelise(question.relatedQuestion3)).image;
+        }
+
+        if (question.relatedQuestion4) {
+            question.relatedImage4 = this.getQuestion(this.handelise(question.relatedQuestion4)).image;
+        }
+
+        return question;
+    },
+
+    getQuestion: function(id) {
         for (var i in data.Questions) {
             if (data.Questions[i].id === id) {
                 return data.Questions[i];
             }
         }
+
+        return false;
     },
 
     closeQuestions: function() {
@@ -113,5 +141,9 @@ module.exports =  {
         }
 
         $('#' + id).addClass('has-chart');
+    },
+
+    handelise: function(string) {
+        return string.replace(/ /g, '-').replace('?', '').replace(/'/g, '').replace(':', '').replace('/', '').toLowerCase();
     }
 };
