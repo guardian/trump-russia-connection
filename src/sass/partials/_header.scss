@@ -175,7 +175,7 @@
     }
 
     @include mq(tablet) {
-        padding-top: 100px;
+        padding-top: 122px;
         padding-left: 130px;
         padding-right: 130px;
     }
@@ -197,11 +197,13 @@
 .mapped-header__title {
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
-    font-size: 48px;
+    font-size: 32px;
     line-height: 1;
+    padding-right: 88px;
 
     @include mq(tablet) {
         font-size: 48px;
+        padding-right: 0;
     }
 
     @include mq(desktop) {
@@ -212,9 +214,15 @@
     span {
         color: $c-red;
         display: block;
+        margin-top: 3px;
+        font-size: 24px;
 
-        @include mq($until: tablet) {
-            font-size: 24px;
+        @include mq(tablet) {
+            font-size: 38px;
+        }
+
+        @include mq(desktop) {
+            font-size: 48px;
         }
     }
 }
