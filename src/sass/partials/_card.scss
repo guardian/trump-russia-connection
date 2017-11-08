@@ -127,6 +127,7 @@
 }
 
 .mapped-card__content {
+    position: relative;
     padding: 6px 10px;
     background-color: $c-white;
     overflow-y: scroll;
@@ -135,7 +136,6 @@
     max-height: calc(100vh - 170px);
 
     @include mq(desktop) {
-        display: flex;
         max-height: calc(100vh - 280px);
         height: 640px;
     }
@@ -156,6 +156,20 @@
     }
 }
 
+.mapped-card__questions-outer {
+    @include mq(desktop) {
+        position: absolute;
+        top: 6px;
+        bottom: 6px;
+        right: 10px;
+        width: 280px;
+    }
+
+    @include mq(wide) {
+        width: 340px;
+    }
+}
+
 .mapped-card__questions {
     position: relative;
     padding-bottom: 32px;
@@ -169,13 +183,18 @@
     }
 
     @include mq(desktop) {
-        max-width: 460px;
-        flex-shrink: 2;
+        position: fixed;
+        box-sizing: border-box;
+        width: 280px;
         padding-top: 0;
         padding-left: 50px;
         background-position: 20px 2px;
         background-image: url('@@assetPath@@/assets/images/vertical-divider.svg');
         background-size: 16px 97%;
+    }
+
+    @include mq(wide) {
+        width: 340px;
     }
 }
 
