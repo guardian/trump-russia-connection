@@ -3,7 +3,7 @@ module.exports = function deploy() {
         {
             files: 'v/**/*',
             headers: {
-                CacheControl: 'max-age=20'
+                CacheControl: 'max-age=604800'
             }
         },
         {
