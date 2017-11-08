@@ -5,8 +5,6 @@ module.exports =  {
     create: function(id) {
         var target = '#' + id + ' .mapped-card__chart';
 
-        console.log(target);
-
         this.setSizes(target);
         this.bindings(target);
 
@@ -17,9 +15,6 @@ module.exports =  {
             data = this.getData(id);
             length = data.length,
             links = this.buildLinks(data);
-
-            console.log(data);
-            console.log(svg);
 
         var simulation = d3.forceSimulation()
             .force('link', d3.forceLink().id(function(d) { return d.name; }).distance(function(d) { return d.linkCopy.length * 22 })) // Set ID and make sure distance between nodes that have linkCopy are given space

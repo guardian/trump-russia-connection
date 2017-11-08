@@ -7,7 +7,9 @@ module.exports =  {
         var template = handlebars.compile(html);
 
         $.each(data.Bios, function(i, bio) {
-            $('#' + id).find('.mapped-card__chart').append(template(bio));
+            if (bio.id === id) {
+                $('#' + id).find('.mapped-card__chart').append(template(bio));
+            }
         });
     }
 };
