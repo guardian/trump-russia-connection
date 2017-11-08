@@ -22,7 +22,7 @@ module.exports =  {
             this.openQuestion(e.currentTarget);
         }.bind(this));
 
-        $('.mapped-mask').click(function() {
+        $('.mapped-mask, .mapped-close').click(function() {
             this.closeQuestions();
         }.bind(this));
     },
