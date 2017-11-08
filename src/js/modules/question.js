@@ -42,15 +42,10 @@ module.exports =  {
         }
 
         if (isFromStack) {
-            console.log(stack);
-            console.log(id);
-            console.log(stack.indexOf(id));
             stack = stack.slice(stack.indexOf(id), stack.length);
         } else {
             stack.unshift(id);
         }
-
-        console.log(stack);
 
         if (!$('html').hasClass('is-open')) {
             $('html').addClass('is-open');

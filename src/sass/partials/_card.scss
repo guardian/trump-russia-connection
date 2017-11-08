@@ -63,7 +63,9 @@
         }
 
         .mapped-card__title-question {
-            font-size: 24px;
+            @include mq(tablet) {
+                font-size: 24px;
+            }
         }
     }
 
