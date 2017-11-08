@@ -76,10 +76,12 @@
     position: relative;
     background-color: $c-red;
     color: $c-white;
-    padding: 6px 10px 24px;
+    padding: 6px 10px 36px;
 }
 
 .mapped-card__last-updated {
+    position: absolute;
+    bottom: 3px;
     font-family: 'Guardian Sans Web';
     font-size: 14px;
     color: $c-black;
