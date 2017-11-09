@@ -23,6 +23,10 @@ module.exports =  {
             this.openQuestion(e.currentTarget);
         }.bind(this));
 
+        $(window).on('hashchange', function() {
+            this.onHashChange();
+        }.bind(this));
+
         $('.mapped-mask, .mapped-close').click(function() {
             this.closeQuestions();
         }.bind(this));
@@ -40,14 +44,17 @@ module.exports =  {
         }
     },
 
-    openQuestion: function(question) {
-        if (typeof question === 'object') {
-            var id = $(question).attr('href').replace('#', '');
-            var isFromStack = $(question).hasClass('mapped-card__title-link');
-        } else {
-            var id = question;
-        }
+    onHashChange: function() {
+        var id = window.location.hash.replace('#', '');
 
+        if (id !== stack[0]) {
+            this.openQuestion(id);
+        }
+    },
+
+    openQuestion: function(question) {
+        var id = typeof question === 'object' ? $(question).attr('href').replace('#', '') : question;
+        var isFromStack = id === stack[1] ? true : false;
         var data = this.getData(id);
 
         // if user clicks on same question do nothing
@@ -75,6 +82,7 @@ module.exports =  {
             this.cycleQuestions();
         }.bind(this), 100);
 
+        this.updateUrl(data);
         this.bindings(); // bindings need to be refreshed as new questions have appeared
     },
 
@@ -119,6 +127,13 @@ module.exports =  {
         }, 500);
 
         stack = [];
+    },
+
+    updateUrl: function(data) {
+        if (window.location.hash !== '#' + data.id) {
+            window.location.href = window.location.href.split('#')[0] + '#' + data.id;
+            $('title').text(data.question);
+        }
     },
 
     cycleQuestions: function() {
