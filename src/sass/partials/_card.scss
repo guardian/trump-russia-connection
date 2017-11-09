@@ -5,7 +5,8 @@
     left: 0;
     right: 0;
     z-index: 1404;
-    transition: transform 0.3s ease-in, opacity 0.1s ease-in;
+    opacity: 0;
+    transition: transform 0.3s ease-in;
     transition-delay: 0.1s;
     transform-origin: top;
     min-height: 100vh;
@@ -29,11 +30,13 @@
     }
 
     &.is-visible {
+        opacity: 1;
         transform: translateY(calc(-100vh + 100px));
         z-index: 1402;
     }
 
     &.is-visible-1 {
+        opacity: 1;
         transform: translateY(calc(-100vh + 65px)) scale(.95);
         z-index: 1401;
 
@@ -47,8 +50,8 @@
     }
 
     &.is-visible-2 {
-        opacity: 0;
         z-index: 1400;
+        opacity: 0;
         transform: translateY(calc(-100vh + 32px)) scale(.9);
 
         .mapped-card__title {
@@ -58,6 +61,8 @@
 
     &.is-visible-1,
     &.is-visible-2 {
+        transition: opacity 0.2s ease-in transform 0.3s ease-in;
+
         .mapped-card__title-link {
             pointer-events: auto;
         }
