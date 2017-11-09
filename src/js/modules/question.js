@@ -47,7 +47,11 @@ module.exports =  {
     onHashChange: function() {
         var id = window.location.hash.replace('#', '');
 
-        if (id !== stack[0]) {
+        console.log(id);
+
+        if (!id) {
+            this.closeQuestions();
+        } else if (id && id !== stack[0]) {
             this.openQuestion(id);
         }
     },
