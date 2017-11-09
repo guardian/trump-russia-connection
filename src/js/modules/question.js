@@ -13,6 +13,7 @@ module.exports =  {
     init: function() {
         this.bindings();
         this.compileTemplate();
+        this.checkForDeepLink();
     },
 
     bindings: function() {
@@ -31,12 +32,23 @@ module.exports =  {
         cardTemplate = handlebars.compile(card);
     },
 
-    openQuestion: function(question) {
-        var id = $(question).attr('href').replace('#', '');
-        var isFromStack = $(question).hasClass('mapped-card__title-link');
-        var data = this.getData(id);
+    checkForDeepLink: function() {
+        var id = window.location.hash.replace('#', '');
 
-        console.log(data);
+        if (this.getQuestion(id)) {
+            this.openQuestion(id);
+        }
+    },
+
+    openQuestion: function(question) {
+        if (typeof question === 'object') {
+            var id = $(question).attr('href').replace('#', '');
+            var isFromStack = $(question).hasClass('mapped-card__title-link');
+        } else {
+            var id = question;
+        }
+
+        var data = this.getData(id);
 
         // if user clicks on same question do nothing
         if (id === stack[0]) {
@@ -68,8 +80,6 @@ module.exports =  {
 
     getData: function(id) {
         var question = this.getQuestion(id);
-
-        console.log(this.getQuestion(question.relatedQuestion1));
 
         if (question.relatedQuestion1) {
             question.relatedImage1 = this.getQuestion(this.handelise(question.relatedQuestion1)).image;
