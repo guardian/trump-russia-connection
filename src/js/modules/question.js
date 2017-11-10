@@ -84,6 +84,7 @@ module.exports =  {
             this.cycleQuestions();
         }.bind(this), 100);
 
+        this.scrollCardToTop(id);
         this.updateUrl(data);
         this.bindings(); // bindings need to be refreshed as new questions have appeared
     },
@@ -168,6 +169,10 @@ module.exports =  {
         }
 
         $('#' + id).addClass('has-chart');
+    },
+
+    scrollCardToTop: function(id) {
+        $('#' + id).find('.mapped-card__content').scrollTop(0);
     },
 
     handelise: function(string) {
