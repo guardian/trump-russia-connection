@@ -12,6 +12,7 @@
     color: $c-red;
     text-decoration: none;
     background-color: $c-white;
+    box-sizing: border-box;
 
     &:hover {
         text-decoration: none;

@@ -307,6 +307,24 @@
 
     .has-loaded & {
         display: block;
+
+        @include mq(phablet) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+    }
+
+    .mapped-question {
+        @include mq(phablet) {
+            width: calc(50% - 10px);
+        }
+
+        &.mapped-question--has-image {
+            @include mq(phablet) {
+                padding-bottom: 20%;
+            }
+        }
     }
 }
 
@@ -317,6 +335,7 @@
     line-height: 1.1;
     margin-top: 0;
     margin-bottom: 12px;
+    width: 100%;
 
     @include mq(tablet) {
         font-size: 24px;
