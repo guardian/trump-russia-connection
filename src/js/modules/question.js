@@ -79,6 +79,7 @@ module.exports =  {
         }
 
         this.addChart(id);
+        this.enhanceTweets(id);
 
         setTimeout(function() {
             this.cycleQuestions();
@@ -169,6 +170,22 @@ module.exports =  {
         }
 
         $('#' + id).addClass('has-chart');
+    },
+
+    enhanceTweets: function(id) {
+        var tweets = $('#' + id).find('.mapped-tweet').each(function(i, tweet) {
+            if (!$(tweet).hasClass('is-enhanced')) {
+                var id = $(tweet).data('url');
+                $.ajax({
+                    url: 'https://publish.twitter.com/oembed?url=https://www.twitter.com' + id,
+                    dataType: 'jsonp',
+                    success: function(data) {
+                       $(tweet).html(data.html);
+                       $(tweet).addClass('is-enhanced');
+                    }
+                });
+            }
+        });
     },
 
     scrollCardToTop: function(id) {

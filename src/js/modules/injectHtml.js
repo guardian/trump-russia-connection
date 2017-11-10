@@ -34,8 +34,12 @@ module.exports =  {
         });
 
         handlebars.registerHelper('marked', function(string) {
-            return marked(string);
-        });
+            string = this.replaceTweets(string);
+            string = marked(string);
+
+
+            return string;
+        }.bind(this));
 
         handlebars.registerHelper('relativeTime', function(string) {
             if (string) {
@@ -142,6 +146,12 @@ module.exports =  {
         $('.mapped').addClass('has-loaded');
 
         question.init();
+    },
+
+    replaceTweets: function(string) {
+        var tweetHtml = require('../templates/tweet.html');
+        var template = handlebars.compile(tweetHtml);
+        return string.replace(/https:\/\/twitter.com([^\s]+)/g, template({url: '$1'}));
     },
 
     handelise: function(string) {
