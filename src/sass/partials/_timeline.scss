@@ -37,6 +37,7 @@
     width: 64px;
     height: 64px;
     border-radius: 32px;
+    overflow: hidden;
 
     @include mq(tablet) {
         width: 128px;

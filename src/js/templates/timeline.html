@@ -1,6 +1,8 @@
-<div class='mapped-timeline__event'>
+<div class='mapped-timeline__event {{#if image}}mapped-timeline__event--has-image{{/if}}'>
     <div class='mapped-timeline__image-wrapper'>
-        <img class='mapped-timeline__image' src='{{ image }}' />
+        {{#if image}}
+            <img class='mapped-timeline__image' src='@@assetPath@@/assets/images/timelines/{{ image }}.jpg' />
+        {{/if}}
     </div>
 
     <h2 class='mapped-timeline__title'>{{ event }} <span class='mapped-timeline__date'>{{ date }}</h2>

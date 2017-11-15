@@ -80,7 +80,6 @@ module.exports =  {
 
             for (var i in data.Timeline) {
                 data.Timeline[i].id = this.handelise(data.Timeline[i].question);
-//                 data.Timeline[i].image = this.getImageUrl(data.Timeline[i].image);
             }
 
             delete data.Main;
