@@ -86,6 +86,18 @@
     padding: 6px 10px 36px;
 }
 
+.mapped-card__title-image {
+    display: none;
+    position: absolute;
+    right: 20px;
+    max-width: 340px;
+    bottom: 0;
+
+    @include mq(tablet) {
+        display: block;
+    }
+}
+
 .mapped-card__last-updated {
     position: absolute;
     bottom: 3px;
@@ -126,8 +138,9 @@
     }
 
     @include mq(desktop) {
-        font-size: 38px;
+        font-size: 32px;
         line-height: 1.1;
+        padding-right: 360px;
     }
 }
 
@@ -178,6 +191,7 @@
 .mapped-card__questions {
     position: relative;
     padding-bottom: 32px;
+    padding-top: 6%;
     background-image: url('@@assetPath@@/assets/images/divider.svg');
     background-repeat: no-repeat;
     background-position: left top;
@@ -185,6 +199,12 @@
 
     @include mq(tablet) {
         padding: inherit 6px 6px;
+    }
+
+    @include mq(phablet, desktop) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
     }
 
     @include mq(desktop) {
@@ -203,6 +223,18 @@
 
     @include mq(wide) {
         width: 340px;
+    }
+
+    .mapped-question {
+        @include mq(phablet, desktop) {
+            width: calc(50% - 10px);
+        }
+
+        &.mapped-question--has-image {
+            @include mq(phablet, desktop) {
+                padding-bottom: 20%;
+            }
+        }
     }
 }
 
