@@ -5,4 +5,9 @@
 
     <h1 class='mapped-bio__name'>{{ name }}, <span class='mapped-bio__description'>{{ description }}</span></h1>
     <div class='mapped-bio__copy'>{{{ marked bio }}}</div>
+    {{#if relatedQuestion}}
+        <div class='mapped-bio__related'>
+            Related: <br /><a class='mapped-bio__link' href='#{{ handelise relatedQuestion }}'>{{ relatedQuestion }}</a>
+        </div>
+    {{/if}}
 </div>

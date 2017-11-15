@@ -9,4 +9,9 @@
     <div class='mapped-timeline__copy'>
         {{{ marked copy }}}
     </div>
+    {{#if relatedQuestion}}
+        <div class='mapped-timeline__related'>
+            Related: <a class='mapped-timeline__link' href='#{{ handelise relatedQuestion }}'>{{ relatedQuestion }}</a>
+        </div>
+    {{/if}}
 </div>
