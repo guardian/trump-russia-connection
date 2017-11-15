@@ -76,7 +76,6 @@ module.exports =  {
 
             for (var i in data.Bios) {
                 data.Bios[i].id = this.handelise(data.Bios[i].question);
-                data.Bios[i].image = this.getImageUrl(data.Bios[i].image);
             }
 
             for (var i in data.Timeline) {
