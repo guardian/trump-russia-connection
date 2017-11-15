@@ -2,7 +2,6 @@ var $ = require('../vendor/jquery.js');
 
 var bios = require('../modules/bios.js');
 var timeline = require('../modules/timeline.js');
-var connections = require('../modules/connections.js');
 
 var card = require('../templates/card.html');
 
@@ -167,10 +166,6 @@ module.exports =  {
 
             if (type === 'timeline') {
                 timeline.create(id);
-            }
-
-            if (type === 'connections') {
-                connections.create(id);
             }
         }
 
