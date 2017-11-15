@@ -2,6 +2,11 @@
     position: relative;
     padding: 2px 0 24px 80px;
 
+    @include mq(tablet) {
+        padding-left: 140px;
+        min-height: 140px;
+    }
+
     &:after {
         content: '';
         position: absolute;
@@ -12,7 +17,10 @@
         background-image: url('@@assetPath@@/assets/images/vertical-line.svg');
         background-size: 100% 100%;
         background-repeat: no-repeat;
-        opacity: .25;
+
+        @include mq(tablet) {
+            left: 52px;
+        }
     }
 
     &:last-of-type:after {
@@ -25,10 +33,16 @@
     z-index: 3;
     top: 0;
     left: 0;
-    background-color: $c-grey;
+    background-color: $c-red;
     width: 64px;
     height: 64px;
     border-radius: 32px;
+
+    @include mq(tablet) {
+        width: 128px;
+        height: 128px;
+        border-radius: 64px;
+    }
 }
 
 .mapped-timeline__image {
@@ -43,6 +57,11 @@ h2.mapped-timeline__title {
     line-height: 1.3;
     color: $c-red;
     margin-top: 4px;
+
+    @include mq(tablet) {
+        font-size: 20px;
+        line-height: 1.2;
+    }
 }
 
 .mapped-timeline__date {
