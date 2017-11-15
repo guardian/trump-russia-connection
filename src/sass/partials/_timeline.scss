@@ -4,7 +4,12 @@
 
     @include mq(tablet) {
         padding-left: 140px;
-        min-height: 140px;
+    }
+
+    &.has-image {
+        @include mq(tablet) {
+            min-height: 140px;
+        }
     }
 
     &:after {
