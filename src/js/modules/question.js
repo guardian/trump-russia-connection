@@ -28,6 +28,7 @@ module.exports =  {
         }.bind(this));
 
         $('.mapped-mask, .mapped-close').click(function() {
+            this.removeIdFromUrl();
             this.closeQuestions();
         }.bind(this));
     },
@@ -52,6 +53,10 @@ module.exports =  {
         } else if (id && id !== stack[0]) {
             this.openQuestion(id);
         }
+    },
+
+    removeIdFromUrl: function() {
+        window.history.pushState({}, 'Trump-Russia investigation: The key questions answered', window.location.pathname);
     },
 
     openQuestion: function(question) {
