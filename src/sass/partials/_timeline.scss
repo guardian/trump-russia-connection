@@ -10,12 +10,13 @@
     &:after {
         content: '';
         position: absolute;
-        top: 32px;
-        left: 16px;
+        top: 6px;
+        left: 17px;
         bottom: -20px;
-        width: 30px;
-        background-image: url('@@assetPath@@/assets/images/vertical-line.svg');
-        background-size: 100% 100%;
+        width: 24px;
+        background-image: url('@@assetPath@@/assets/images/vertical-divider.svg');
+        background-size: 100% auto;
+        background-position: center;
         background-repeat: no-repeat;
 
         @include mq(tablet) {
@@ -25,6 +26,23 @@
 
     &:last-of-type:after {
         display: none;
+    }
+}
+
+.mapped-timeline__event-point {
+    position: absolute;
+    z-index: 3;
+    top: 4px;
+    left: 16px;
+    width: 24px;
+    height: 24px;
+    background-color: $c-red;
+    border-radius: 12px;
+    overflow: hidden;
+
+    @include mq(tablet) {
+        left: 52px;
+        top: 6px;
     }
 }
 
