@@ -36,7 +36,6 @@ module.exports =  {
         handlebars.registerHelper('marked', function(string) {
             string = this.replaceTweets(string);
             string = marked(string);
-            string = this.replaceGraphics(string);
 
             return string;
         }.bind(this));
@@ -144,21 +143,6 @@ module.exports =  {
         var tweetHtml = require('../templates/tweet.html');
         var template = handlebars.compile(tweetHtml);
         return string.replace(/https:\/\/twitter.com([^\s]+)/g, template({url: '$1'}));
-    },
-
-    replaceGraphics: function(string) {
-        var html = $.parseHTML(string);
-        $(html).find('img').addClass('mapped-card__graphic').attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') });
-
-        var htmlAsText = '';
-
-        for (var i in html) {
-            if ($(html)[i].outerHTML !== undefined) {
-                htmlAsText += $(html)[i].outerHTML;
-            }
-        }
-
-        return htmlAsText;
     },
 
     handelise: function(string) {

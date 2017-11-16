@@ -84,6 +84,7 @@ module.exports =  {
 
         this.addChart(id);
         this.enhanceTweets(id);
+        this.enhanceGraphics(id);
 
         setTimeout(function() {
             this.cycleQuestions();
@@ -186,6 +187,10 @@ module.exports =  {
                 });
             }
         });
+    },
+
+    enhanceGraphics: function(id) {
+        $('#' + id + ' .mapped-card__copy img').addClass('mapped-card__graphic').attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') });
     },
 
     scrollCardToTop: function(id) {
