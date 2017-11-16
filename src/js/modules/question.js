@@ -190,7 +190,7 @@ module.exports =  {
     },
 
     enhanceGraphics: function(id) {
-        $('#' + id + ' .mapped-card__copy img').addClass('mapped-card__graphic').attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') });
+        $('#' + id + ' .mapped-card__copy img').addClass('mapped-card__graphic').attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') + '.svg' });
     },
 
     scrollCardToTop: function(id) {
