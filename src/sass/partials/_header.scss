@@ -393,3 +393,16 @@
         }
     }
 }
+
+.mapped-header__caption {
+    display: none;
+    margin-top: 24px;
+    font-family: 'Guardian Sans Web';
+    font-size: 14px;
+    line-height: 1.2;
+    color: $c-dark-grey;
+
+    .has-loaded & {
+        display: block;
+    }
+}
