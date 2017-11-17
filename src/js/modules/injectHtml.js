@@ -4,6 +4,7 @@ window.handlebars = require('handlebars');
 
 var lastUpdated = require('../modules/lastUpdated.js');
 var question = require('../modules/question.js');
+var expand = require('../modules/expand.js');
 
 var questionHtml = require('../templates/question.html');
 
@@ -136,6 +137,7 @@ module.exports =  {
     markAsLoaded: function() {
         $('.mapped').addClass('has-loaded');
 
+        expand.init();
         question.init();
     },
 
