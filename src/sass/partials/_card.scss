@@ -6,7 +6,7 @@
     right: 0;
     z-index: 1404;
     opacity: 0;
-    transition: transform 0.3s ease-in;
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     transition-delay: 0.1s;
     transform-origin: top;
     min-height: 100vh;
@@ -33,6 +33,10 @@
         opacity: 1;
         transform: translateY(calc(-100vh + 100px));
         z-index: 1402;
+
+        .mapped-card__title-image {
+            opacity: 1;
+        }
     }
 
     &.is-visible-1 {
@@ -92,9 +96,11 @@
     right: 20px;
     max-width: 340px;
     bottom: 0;
+    transition: opacity 0.2s ease-in;
 
     @include mq(tablet) {
         display: block;
+        opacity: 0;
     }
 }
 
