@@ -1,7 +1,7 @@
 var $ = require('../vendor/jquery.js');
 
 var pageUrl = window.location.href;
-var title = 'Mapped: Trump and Russia';
+var title = 'Trump-Russia investigation: The key questions answered';
 
 module.exports =  {
     init: function() {
@@ -16,7 +16,7 @@ module.exports =  {
 
     getTwitterLink: function(id) {
         return 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + 
-                '&url=' + encodeURIComponent(pageUrl + (id ? '#' + id : '') + '?CMP=share_btn_tw');
+                ' ' + encodeURIComponent(pageUrl + '?CMP=share_btn_tw #TrumpRussia');
     },
 
     getFacebookLink: function(id) {
