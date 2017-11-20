@@ -190,7 +190,12 @@ module.exports =  {
     },
 
     enhanceGraphics: function(id) {
-        $('#' + id + ' .mapped-card__copy img').addClass('mapped-card__graphic').attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') + '.svg' });
+        $('#' + id + ' .mapped-card__copy img').each(function(i, img) {
+            if (!$(img).hasClass('is-enhanced') && $(img).attr('alt') === 'Graphic') {
+                $(img).attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') + '.svg' });
+                $(img).addClass('is-enhanced');
+            }
+        });
     },
 
     scrollCardToTop: function(id) {

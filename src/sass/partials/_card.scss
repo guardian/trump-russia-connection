@@ -48,6 +48,10 @@
             transform: translateY(calc(-100vh + 62px)) scale(.95);
         }
 
+        .mapped-card__title-link {
+            pointer-events: auto;
+        }
+
         .mapped-card__title {
             background-color: #d34225;
         }
@@ -66,10 +70,6 @@
     &.is-visible-1,
     &.is-visible-2 {
         transition: opacity 0.2s ease-in transform 0.3s ease-in;
-
-        .mapped-card__title-link {
-            pointer-events: auto;
-        }
 
         .mapped-card__title-question {
             @include mq(tablet) {
