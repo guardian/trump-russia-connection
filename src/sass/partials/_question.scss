@@ -51,6 +51,10 @@
     right: 0;
     bottom: 0;
     z-index: 8;
+
+    &:visited {
+        color: $c-grey !important;
+    }
 }
 
 .mapped-question__button {

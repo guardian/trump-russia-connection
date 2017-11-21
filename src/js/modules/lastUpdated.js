@@ -27,7 +27,7 @@ module.exports =  {
             return 'on ' + this.getDay(then);
 
         } else {
-            return this.getDay(then) + ' ' + then.getDate() + ' ' + this.getMonth(then) + ' ' + then.getFullYear();
+            return then.getDate() + ' ' + this.getMonth(then) + ' ' + then.getFullYear();
         }
     },
 

@@ -91,16 +91,23 @@
 }
 
 .mapped-card__title-image {
-    display: none;
     position: absolute;
-    right: 20px;
+    right: -44px;
     max-width: 340px;
+    width: 190px;
     bottom: 0;
     transition: opacity 0.2s ease-in;
+    opacity: 0;
+
+    @include mq(mobileLandscape) {
+        right: 0;
+    }
 
     @include mq(tablet) {
         display: block;
-        opacity: 0;
+        right: 20px;
+        left: auto;
+        width: auto;
     }
 }
 
@@ -138,6 +145,7 @@
     line-height: 1.2;
     margin: 0;
     transition: opacity 0.2s ease-out, font-size 0.2s ease-out;
+    padding-right: 30vw;
 
     @include mq(tablet) {
         font-size: 24px;
