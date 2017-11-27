@@ -250,6 +250,12 @@
             }
         }
     }
+
+    .mapped-question:nth-of-type(4) {
+        @include mq(tablet) {
+            display: none;
+        }
+    }
 }
 
 .mapped-card__chart {
