@@ -85,6 +85,7 @@ module.exports =  {
         this.addChart(id);
         this.enhanceTweets(id);
         this.enhanceGraphics(id);
+        this.enhancePhotos(id);
 
         setTimeout(function() {
             this.cycleQuestions();
@@ -193,6 +194,15 @@ module.exports =  {
         $('#' + id + ' .mapped-card__copy img').each(function(i, img) {
             if (!$(img).hasClass('is-enhanced') && $(img).attr('alt') === 'Graphic') {
                 $(img).attr('src', function() { return '@@assetPath@@/assets/images/graphics/' + $(this).attr('src') + '.svg' });
+                $(img).addClass('is-enhanced');
+            }
+        });
+    },
+
+    enhancePhotos: function(id) {
+        $('#' + id + ' .mapped-card__copy img').each(function(i, img) {
+            if (!$(img).hasClass('is-enhanced') && $(img).attr('alt') === 'Photo') {
+                $(img).attr('src', function() { return '@@assetPath@@/assets/images/photos/' + $(this).attr('src') + '.jpg' });
                 $(img).addClass('is-enhanced');
             }
         });
