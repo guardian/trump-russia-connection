@@ -15,8 +15,6 @@
 
     @include mq(tablet) {
         display: block;
-        min-height: auto;
-        bottom: 0;
         left: 20px;
         right: 20px;
     }
@@ -26,7 +24,7 @@
     }
 
     @include mq(wide) {
-        width: 1000px;
+        width: 1080px;
     }
 
     &.is-visible {
@@ -168,8 +166,8 @@
     max-height: calc(100vh - 170px);
 
     @include mq(desktop) {
-        max-height: calc(100vh - 280px);
-        height: 640px;
+        height: calc(100vh - 170px);
+        max-height: 920px;
     }
 }
 
@@ -230,8 +228,8 @@
         background-position: 20px 2px;
         background-image: url('@@assetPath@@/assets/images/vertical-divider.svg');
         background-size: 16px 97%;
-        max-height: calc(100vh - 280px);
-        height: 640px;
+        height: calc(100vh - 170px);
+        max-height: 920px;
         overflow: hidden;
     }
 
