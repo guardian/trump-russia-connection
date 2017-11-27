@@ -8,12 +8,12 @@
     }
 
     a {
-        color: $c-red;
-        border-bottom: 1px solid $c-black;
+        color: $c-black;
+        border-bottom: 1px solid $c-red;
 
         &:hover {
             text-decoration: none;
-            border-bottom-color: $c-red;
+            color: $c-red;
         }
     }
 
