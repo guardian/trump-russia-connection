@@ -144,7 +144,7 @@ module.exports =  {
     replaceTweets: function(string) {
         var tweetHtml = require('../templates/tweet.html');
         var template = handlebars.compile(tweetHtml);
-        return string.replace(/https:\/\/twitter.com([^\s]+)/g, template({url: '$1'}));
+        return string.replace(/https:\/\/twitter.com([^\s]+)\/status([^\s]+)/g, template({url: '$1' + '/status' + '$2'}));
     },
 
     handelise: function(string) {
