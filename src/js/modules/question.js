@@ -196,9 +196,11 @@ module.exports =  {
 
     enhancePhotos: function(id) {
         $('#' + id + ' .mapped-card__copy img').each(function(i, img) {
-            if (!$(img).hasClass('is-enhanced') && $(img).attr('alt') === 'Photo') {
+            if (!$(img).hasClass('is-enhanced') && $(img).attr('alt').slice(0, 8) === 'Photo - ') {
                 $(img).attr('src', function() { return '@@assetPath@@/assets/images/photos/' + $(this).attr('src') + '.jpg' });
                 $(img).addClass('is-enhanced');
+                $(img).append
+                $(img)[0].outerHTML = '<div class=\'mapped-card__image\'>' + $(img)[0].outerHTML + '<span class=\'mapped-card__caption\'>' + $(img).attr('alt').slice(8) + '</span></div>';
             }
         });
     },
