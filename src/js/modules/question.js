@@ -2,6 +2,7 @@ var $ = require('../vendor/jquery.js');
 
 var bios = require('../modules/bios.js');
 var timeline = require('../modules/timeline.js');
+var analytics = require('../modules/analytics.js');
 
 var card = require('../templates/card.html');
 
@@ -16,12 +17,6 @@ module.exports =  {
     },
 
     bindings: function() {
-        $('a.is-question').unbind('click');
-        $('a.is-question').bind('click', function(e) {
-            e.preventDefault();
-            this.openQuestion(e.currentTarget);
-        }.bind(this));
-
         $(window).on('hashchange', function() {
             this.onHashChange();
         }.bind(this));
@@ -91,9 +86,9 @@ module.exports =  {
             this.cycleQuestions();
         }.bind(this), 100);
 
+        this.analytics(id);
         this.scrollCardToTop(id);
         this.updateUrl(data);
-        this.bindings(); // bindings need to be refreshed as new questions have appeared
     },
 
     getData: function(id) {
@@ -210,6 +205,18 @@ module.exports =  {
 
     scrollCardToTop: function(id) {
         $('#' + id).find('.mapped-card__content').scrollTop(0);
+    },
+
+    analytics: function(id) {
+        var source;
+
+        if ($('.mapped-card').hasClass('is-visible')) {
+            source = 'from ' + $('.mapped-card.is-visible').attr('id');
+        } else {
+            source = 'from index';
+        }
+
+        analytics.trackQuestion(id, source);
     },
 
     handelise: function(string) {
