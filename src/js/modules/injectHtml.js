@@ -119,7 +119,9 @@ module.exports =  {
                 $('.mapped-header__questions--latest').append(questionTemplate(data.Questions[i]));
             }
 
-            $('.mapped-header__questions--index').append(questionTemplate(data.Questions[i]));
+            if (!data.Questions[i].isLatest && !data.Questions[i].isStarter) {
+                $('.mapped-header__questions--index').append(questionTemplate(data.Questions[i]));
+            }
         }
     },
 
