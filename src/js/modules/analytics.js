@@ -7,7 +7,6 @@ module.exports =  {
 
     trackQuestion: function(question, source) {
         if (window.ga) {
-            console.log(question);
             var gaTracker = window.guardian.config.googleAnalytics.trackers.editorial;
 
             window.ga(gaTracker + '.send', 'event', 'Click', 'in page', 'trump-question-opened | ' + question + ' | ' + source, 1, {
