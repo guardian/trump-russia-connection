@@ -111,7 +111,7 @@ module.exports =  {
         var questionTemplate = handlebars.compile(questionHtml);
 
         for (var i in data.Questions) {
-            if (data.Questions[i].question !== '' && data.Questions[i].isStarter) {
+            if (data.Questions[i].question !== '' && data.Questions[i].group === 'Top level') {
                 $('.mapped-header__questions--starter').append(questionTemplate(data.Questions[i]));
             }
 
@@ -119,7 +119,7 @@ module.exports =  {
                 $('.mapped-header__questions--latest').append(questionTemplate(data.Questions[i]));
             }
 
-            if (!data.Questions[i].isLatest && !data.Questions[i].isStarter) {
+            if (!data.Questions[i].isLatest && data.Questions[i].group !== 'Top level') {
                 $('.mapped-header__questions--index').append(questionTemplate(data.Questions[i]));
             }
         }
