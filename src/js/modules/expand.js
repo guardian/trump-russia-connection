@@ -12,6 +12,6 @@ module.exports =  {
     },
 
     expandIndex: function() {
-        $('.mapped-header__questions--index').removeClass('is-collapsed').addClass('is-expanded');
+        $('.mapped-header__index').removeClass('is-collapsed').addClass('is-expanded');
     }
 };

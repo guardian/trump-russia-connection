@@ -388,13 +388,24 @@
     }
 }
 
-.mapped-header__questions--index {
-    .mapped-question {
+.mapped-header__index {
+    display: none;
+
+    .mapped-header__questions,
+    .mapped-header__divider {
         display: none;
     }
 
+    .has-loaded & {
+        display: block;
+    }
+
     &.is-expanded {
-        .mapped-question {
+        .mapped-header__questions {
+            display: flex;
+        }
+
+        .mapped-header__divider {
             display: block;
         }
 
