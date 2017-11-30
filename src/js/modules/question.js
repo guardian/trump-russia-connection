@@ -32,7 +32,7 @@ module.exports =  {
     },
 
     checkForDeepLink: function() {
-        var id = window.location.hash.replace('#', '');
+        var id = window.location.hash.replace('#', '').split('?')[0];
 
         if (this.getQuestion(id)) {
             this.openQuestion(id);
