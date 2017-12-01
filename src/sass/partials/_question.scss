@@ -3,10 +3,10 @@
     overflow: hidden;
     font-family: 'Guardian Egyptian Web';
     font-weight: 900;
-    font-size: 18px;
-    line-height: 1.2;
+    font-size: 16px;
+    line-height: 1.1;
     padding: 6px 6px 40px;
-    margin: 4px 0 12px;
+    margin: 4px 0 6px;
     list-style: none;
     border: 1px solid $c-grey;
     color: $c-red;
@@ -21,6 +21,10 @@
         .mapped-question__button {
             background-color: $c-red;
         }
+    }
+
+    @include mq(mobileLandscape) {
+        margin-bottom: 12px;
     }
 
     @include mq(tablet) {
@@ -40,7 +44,11 @@
     }
 
     &.mapped-question--has-image {
-        padding-bottom: 40%;
+        padding-bottom: 20%;
+
+        @include mq(desktop) {
+            padding-bottom: 40%;
+        }
     }
 }
 
