@@ -401,12 +401,15 @@
     }
 
     &.is-expanded {
-        .mapped-header__questions {
-            display: flex;
-        }
-
+        .mapped-header__questions,
         .mapped-header__divider {
             display: block;
+        }
+
+        .mapped-header__questions {
+            @include mq(phablet) {
+                display: flex;
+            }
         }
 
         .mapped-header__expand-button {
