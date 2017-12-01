@@ -29,8 +29,12 @@
 
     &.is-visible {
         opacity: 1;
-        transform: translateY(calc(-100vh + 100px));
+        transform: translateY(calc(-100vh + 50px));
         z-index: 1402;
+
+        @include mq(tablet) {
+            transform: translateY(calc(-100vh + 100px));
+        }
 
         .mapped-card__title-image {
             opacity: 1;
@@ -39,11 +43,19 @@
 
     &.is-visible-1 {
         opacity: 1;
-        transform: translateY(calc(-100vh + 65px)) scale(.95);
+        transform: translateY(calc(-100vh + 25px)) scale(.95);
         z-index: 1401;
 
+        @include mq(tablet) {
+            transform: translateY(calc(-100vh + 65px)) scale(.95);
+        }
+
         &:hover {
-            transform: translateY(calc(-100vh + 62px)) scale(.95);
+            transform: translateY(calc(-100vh + 22px)) scale(.95);
+
+            @include mq(tablet) {
+                transform: translateY(calc(-100vh + 62px)) scale(.95);
+            }
         }
 
         .mapped-card__title-link {
@@ -165,7 +177,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     flex-grow: 2;
-    max-height: calc(100vh - 170px);
+    max-height: calc(100vh - 146px);
 
     @include mq(desktop) {
         height: calc(100vh - 170px);
