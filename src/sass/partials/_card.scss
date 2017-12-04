@@ -9,7 +9,7 @@
     transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     transition-delay: 0.1s;
     transform-origin: top;
-    min-height: 100vh;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
 
@@ -17,6 +17,7 @@
         display: block;
         left: 20px;
         right: 20px;
+        height: calc(100vh - 50px);
     }
 
     @include mq(desktop) {
@@ -156,7 +157,7 @@
     line-height: 1.2;
     margin: 0;
     transition: opacity 0.2s ease-out, font-size 0.2s ease-out;
-    padding-right: 30vw;
+    padding-right: 36vw;
 
     @include mq(tablet) {
         font-size: 24px;
@@ -177,7 +178,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     flex-grow: 2;
-    max-height: calc(100vh - 146px);
+    height: calc(100vh - 50px);
 
     @include mq(desktop) {
         height: calc(100vh - 170px);
