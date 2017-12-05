@@ -115,11 +115,15 @@ module.exports =  {
                 $('.mapped-header__questions--starter').append(questionTemplate(data.Questions[i]));
             }
 
+            if (data.Questions[i].question !== '' && data.Questions[i].group === 'The Analysis') {
+                $('.mapped-header__questions--analysis').append(questionTemplate(data.Questions[i]));
+            }
+
             if (data.Questions[i].question !== '' && data.Questions[i].isLatest) {
                 $('.mapped-header__questions--latest').append(questionTemplate(data.Questions[i]));
             }
 
-            if (!data.Questions[i].isLatest && data.Questions[i].group !== 'Top level') {
+            if (!data.Questions[i].isLatest && data.Questions[i].group !== 'Top level' && data.Questions[i].group !== 'The Analysis') {
                 var target = '.mapped-header__index .mapped-header__questions--' + this.handelise(data.Questions[i].group);
 
                 if ($(target).length === 0) {
