@@ -14,10 +14,9 @@
     flex-direction: column;
 
     @include mq(tablet) {
-        display: block;
         left: 20px;
         right: 20px;
-        height: calc(100vh - 50px);
+        height: calc(100vh - 100px);
     }
 
     @include mq(desktop) {
