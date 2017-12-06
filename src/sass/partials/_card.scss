@@ -9,7 +9,7 @@
     transition: transform 0.3s ease-in, opacity 0.3s ease-in;
     transition-delay: 0.1s;
     transform-origin: top;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 70px);
     display: flex;
     flex-direction: column;
 
@@ -29,7 +29,7 @@
 
     &.is-visible {
         opacity: 1;
-        transform: translateY(calc(-100vh + 50px));
+        transform: translateY(calc(-100vh + 70px));
         z-index: 1402;
 
         @include mq(tablet) {
@@ -43,7 +43,7 @@
 
     &.is-visible-1 {
         opacity: 1;
-        transform: translateY(calc(-100vh + 25px)) scale(.95);
+        transform: translateY(calc(-100vh + 45px)) scale(.95);
         z-index: 1401;
 
         @include mq(tablet) {
@@ -51,7 +51,7 @@
         }
 
         &:hover {
-            transform: translateY(calc(-100vh + 22px)) scale(.95);
+            transform: translateY(calc(-100vh + 42px)) scale(.95);
 
             @include mq(tablet) {
                 transform: translateY(calc(-100vh + 62px)) scale(.95);
@@ -177,7 +177,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     flex-grow: 2;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 70px);
 
     @include mq(desktop) {
         height: calc(100vh - 170px);

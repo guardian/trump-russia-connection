@@ -19,7 +19,7 @@
     transition: background 0.3s ease-in;
 
     .is-open & {
-        background-color: rgba(0, 0, 0, 0.78);
+        background-color: rgba(0, 0, 0, 0.85);
         pointer-events: auto;
     }
 }
@@ -27,37 +27,38 @@
 .mapped-close {
     position: fixed;
     z-index: 1500;
-    top: 12px;
-    right: 10px;
-    width: 30px;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    display: inline-block;
+    margin: auto;
     height: 30px;
     margin-top: -2px;
     border-radius: 16px;
+    color: $c-white;
+    font-family: 'Guardian Sans Web';
+    font-size: 16px;
+    line-height: 30px;
     background-color: $c-black;
-    background-image: url('@@assetPath@@/assets/images/close.svg');
+    background-image: url('@@assetPath@@/assets/images/back.svg');
     background-repeat: no-repeat;
-    background-size: 50%;
-    background-position: center center;
+    background-size: auto 100%;
+    text-indent: 32px;
+    background-position: 2px center;
     opacity: 0;
+    padding-right: 12px;
+    white-space: nowrap;
+    transition: background 0.2s ease-out;
+    cursor: pointer;
 
     @include mq(tablet) {
-        width: 38px;
-        height: 38px;
-        border-radius: 20px;
-        top: 81px;
-        right: 4px;
-    }
-
-    @include mq(desktop) {
-        right: calc((100vw - 940px) / 2 - 19px);
-    }
-
-    @include mq(wide) {
-        right: calc((100vw - 1000px) / 2 - 19px);
+        top: 24px;
     }
 
     &:hover {
         background-color: $c-red;
+        background-position: 0px center;
         cursor: pointer;
     }
 
