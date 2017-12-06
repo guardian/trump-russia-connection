@@ -20,6 +20,7 @@
 
         .mapped-question__button {
             background-color: $c-red;
+            background-position: calc(50% + 2px) center;
         }
     }
 
@@ -81,6 +82,7 @@
     background-repeat: no-repeat;
     background-size: 90%;
     background-position: center center;
+    transition: background 0.2s ease-out;
 
     @include mq(tablet) {
         width: 30px;
@@ -96,4 +98,8 @@
     left: 0;
     pointer-events: none;
     width: 100%;
+
+    .is-collapsed & {
+        display: none;
+    }
 }
