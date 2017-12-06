@@ -192,6 +192,10 @@
     @include mq(wide) {
         padding-left: 260px;
     }
+
+    &--second {
+        padding-top: 12px;
+    }
 }
 
 .mapped-header__title {

@@ -72,3 +72,21 @@
 .is-open body {
     overflow: hidden;
 }
+
+.interactive-ad-banner {
+    margin: 12px auto 0;
+    background-color: #e8e8e8;
+
+    .ad-slot__content {
+        width: 100% !important;
+    }
+
+    .ad-slot__label {
+        background-color: #e8e8e8;
+    }
+
+    iframe {
+        margin: 0 auto 12px;
+        display: block;
+    }
+}
