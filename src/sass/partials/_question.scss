@@ -22,6 +22,10 @@
             background-color: $c-red;
             background-position: calc(50% + 2px) center;
         }
+
+        .mapped-question__image {
+            transform: translateX(4px);
+        }
     }
 
     @include mq(mobileLandscape) {
@@ -98,6 +102,7 @@
     left: 0;
     pointer-events: none;
     width: 100%;
+    transition: transform 0.3s ease-out;
 
     .is-collapsed & {
         display: none;
