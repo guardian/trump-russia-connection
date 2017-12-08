@@ -257,12 +257,6 @@
         @include mq(desktop) {
             width: 100%;
         }
-
-        &.mapped-question--has-image {
-            @include mq(phablet, desktop) {
-                padding-bottom: 20%;
-            }
-        }
     }
 
     .mapped-question:nth-of-type(4) {

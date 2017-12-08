@@ -1,8 +1,10 @@
 <li class='mapped-question {{#if image}}mapped-question--has-image{{/if}}'>
-    <a class='mapped-question__link is-question' href='#{{ handelise question }}'></a>
-    {{ question }}
-    <div class='mapped-question__button'></div>
-    {{#if image}}
-        <img class='mapped-question__image' src='@@assetPath@@/assets/images/cards/{{ image }}.png' />
-    {{/if}}
+    <div class='mapped-question__inner'>
+        <a class='mapped-question__link is-question' href='#{{ handelise question }}'></a>
+        {{ question }}
+        <div class='mapped-question__button'></div>
+    </div>
+        {{#if image}}
+            <img class='mapped-question__image' src='@@assetPath@@/assets/images/cards/{{ image }}.png' />
+        {{/if}}
 </li>

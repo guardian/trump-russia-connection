@@ -332,10 +332,6 @@
         @include mq(mobileLandscape) {
             width: calc(50% - 10px);
         }
-
-        &.mapped-question--has-image {
-            padding-bottom: 20%;
-        }
     }
 }
 
