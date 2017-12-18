@@ -53,7 +53,7 @@ module.exports =  {
     },
 
     getJson: function() {
-        $.getJSON('https://interactive.guim.co.uk/docsdata-test/1As_b3BQ4IE444OgwNg-fqTF4tSfC51f4KKPSmQXtwhc.json', function(response) {
+        $.getJSON('https://interactive.guim.co.uk/docsdata/1As_b3BQ4IE444OgwNg-fqTF4tSfC51f4KKPSmQXtwhc.json', function(response) {
             window.data = response.sheets;
 
             for (var i in data.Main) {
