@@ -29,11 +29,11 @@
 
     &.is-visible {
         opacity: 1;
-        transform: translateY(calc(-100vh + 70px));
+        transform: translateY(-100vh) translateY(70px);
         z-index: 1402;
 
         @include mq(tablet) {
-            transform: translateY(calc(-100vh + 100px));
+            transform: translateY(-100vh) translateY(100px);
         }
 
         .mapped-card__title-image {
@@ -43,18 +43,18 @@
 
     &.is-visible-1 {
         opacity: 1;
-        transform: translateY(calc(-100vh + 45px)) scale(.95);
+        transform: translateY(-100vh) translateY(45px) scale(.95);
         z-index: 1401;
 
         @include mq(tablet) {
-            transform: translateY(calc(-100vh + 65px)) scale(.95);
+            transform: translateY(-100vh) translateY(65px) scale(.95);
         }
 
         &:hover {
-            transform: translateY(calc(-100vh + 42px)) scale(.95);
+            transform: translateY(-100vh) translateY(42px) scale(.95);
 
             @include mq(tablet) {
-                transform: translateY(calc(-100vh + 62px)) scale(.95);
+                transform: translateY(-100vh) translateY(62px) scale(.95);
             }
         }
 
@@ -70,7 +70,7 @@
     &.is-visible-2 {
         z-index: 1400;
         opacity: 0;
-        transform: translateY(calc(-100vh + 32px)) scale(.9);
+        transform: translateY(-100vh) translateY(32px) scale(.9);
 
         .mapped-card__title {
             background-color: #af2f15;
