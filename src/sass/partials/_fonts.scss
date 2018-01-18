@@ -1,10 +1,8 @@
 @font-face {
     font-family: 'Guardian Egyptian Web';
-    src: url('https://interactive.guim.co.uk/fonts/latin1/Guardian Egyp Web-Bold.eot');
-    src: url('https://interactive.guim.co.uk/fonts/latin1/Guardian Egyp Web-Bold.eot?#iefix') format('embedded-opentype'),
-         url('https://interactive.guim.co.uk/fonts/latin1/Guardian Egyp Web-Bold.woff') format('woff'),
-         url('https://interactive.guim.co.uk/fonts/latin1/Guardian Egyp Web-Bold.ttf') format('truetype'),
-         url('https://interactive.guim.co.uk/fonts/latin1/Guardian Egyp Web-Bold.svg#Guardian Egyp Web-Bold') format('svg');
+    src: url('https://interactive.guim.co.uk/fonts/guss-webfonts/GHGuardianHeadline/GHGuardianHeadline-Bold.woff2') format('woff2'),
+         url('https://interactive.guim.co.uk/fonts/guss-webfonts/GHGuardianHeadline/GHGuardianHeadline-Bold.woff') format('woff'),
+         url('https://interactive.guim.co.uk/fonts/guss-webfonts/GHGuardianHeadline/GHGuardianHeadline-Bold.ttf') format('truetype');
     font-weight: 900;
     font-style: normal;
     font-stretch: normal;
@@ -33,3 +31,4 @@
     font-style: normal;
     font-stretch: normal;
 }
+
