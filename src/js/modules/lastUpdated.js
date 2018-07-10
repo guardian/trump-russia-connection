@@ -3,7 +3,7 @@ var $ = require('../vendor/jquery.js');
 module.exports =  {
     convert: function(timestamp) {
         var now = new Date(),
-            then = new Date(timestamp + '-05:00'),
+            then = new Date(timestamp + '-04:00'),
             delta = parseInt((now.getTime() - then) / 1000, 10);
 
         if (delta < 0) {
